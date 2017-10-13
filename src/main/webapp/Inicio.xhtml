@@ -6,11 +6,28 @@
 	template="/WEB-INF/templates/Layout.xhtml">
 	
 	<ui:define name="content">
-		<h1 class="aw-page-title">Título da sua página</h1>
-		
-		<h:form id="frm">
-			Conteúdo do formulário
-		</h:form>
+
+	<div class="page-header">
+		<div class="container-fluid">
+			<div class="row">
+				<div class="col-xs-8">
+					<h1>
+						Pesquisa de produtos
+					</h1>
+				</div>
+				
+				<div class="col-xs-4">
+					<div class="aw-page-header-controls">
+						<a class="btn btn-primary" href="cadastro-produto.html">
+							<i class="fa  fa-plus-circle"></i> <span class="hidden-xs  hidden-sm">Novo produto</span>
+						</a>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+
 	</ui:define>
 	
 </ui:composition>
