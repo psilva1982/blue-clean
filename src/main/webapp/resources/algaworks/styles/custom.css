@@ -1,0 +1,349 @@
+@charset "utf-8";
+
+/* Cantos arredondados maioria dos componentes de formulário */
+.ui-corner-all, .ui-state-default {
+    border-radius: 0px !important;
+}
+
+/* ----------- */
+/* Outputlabel */
+/* ----------- */
+
+.ui-outputlabel {
+	font-size: 95% !important;  /* 13 px */
+}
+
+/* ----------- */
+/* Commandlink */
+/* ----------- */
+.ui-commandlink {
+	border-radius: 0px !important;
+}
+
+/* ------ */
+/* Botões */
+/* ------ */
+.ui-button {
+    height: 31px;
+    border-radius: 0px !important;
+    text-shadow: none !important;
+    margin: 0 !important;
+}
+
+.ui-button .ui-icon {
+	margin-top: -7px !important;
+}
+
+.ui-widget-content button.ui-state-default {
+    box-shadow: none !important;
+}
+
+/* ------------- */
+/* Selectonemenu */
+/* ------------- */
+.ui-selectonemenu {
+    height: 30px;
+    display: block !important;
+    border-color: #d2d6de !important;
+    border-radius: 0 !important;
+}
+.ui-selectonemenu-trigger {
+    width: 30px !important;
+    padding: 3px 6px !important;
+    border-radius: 0 !important;
+}
+.ui-selectonemenu-label {
+    padding: 4px !important;
+}
+
+/* ------------------ */
+/* Selectmanycheckbox *
+/* ------------------ */
+.ui-selectmanycheckbox label { 
+	font-size: 90%; 			/* 14px */
+	font-weight: normal;
+	position: relative;
+    top: 5px;
+}
+
+/* Posicionamento do check nos checkboxes  */
+span.ui-icon-check {
+    position: relative;
+    right: 1px;
+    bottom: 1px;
+}
+
+/* Posicionamento da caixa do checkbox */
+.ui-chkbox-box {
+    position: relative;
+    top: 7px;
+}
+
+/* -------------- */
+/* SelectOneradio */
+/* -------------- */
+.ui-selectoneradio label { 
+	font-size: 90%;		/* 14px	*/
+	font-weight: normal;
+	position: relative;
+	top: 1px;
+}
+
+/* Posicionamento do bullet nos radiobuttons */ 
+span.ui-icon-bullet {
+    position: relative;
+    right: 1px;
+    bottom: 1px;
+}
+
+/* Posicionamento da caixa do radio button */
+.ui-radiobutton-box {
+	border-radius: 30px !important;
+	position: relative;
+	top: 2px;
+}
+
+/* -------- */
+/* Calendar */
+/* -------- */
+.ui-datepicker-calendar a.ui-state-default {
+	text-align: center;
+}
+
+.ui-calendar > .ui-button {
+	height: 30px !important;
+}
+
+/* -------- */ 
+/* Messages */
+/* -------- */ 
+.ui-messages > div {
+    padding: 15px;
+    margin-bottom: 15px;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: white;
+    font-size: 14px;
+}
+
+.ui-messages-error {
+    border-color: #d73925 !important;
+    background-color: #dd4b39 !important;
+}
+.ui-messages-warn {
+    border-color: #e08e0b !important;
+    background-color: #f39c12 !important;
+}
+
+.ui-messages-info {
+    border-color: #00acd6 !important;		/* Cor antiga #00acd6 */
+    background-color: #00c0ef !important;	/* Cor antiga #00c0ef */
+}
+.ui-messages ul {
+    margin: 0 !important;
+}
+
+/* Remove o icone de erro */
+.ui-messages span.ui-messages-info-icon, 
+.ui-messages span.ui-messages-warn-icon, 
+.ui-messages span.ui-messages-error-icon { 
+    display: none;
+}
+
+/* Ajustando icone para fechar a janela de erro de validação */
+.ui-messages-error .ui-icon-close {
+    background-position: initial !important;
+    background-image: url("#{resource['primefaces:img/ui-icon-close.png']}") !important;
+}
+
+/* Ajustando icone para fechar a janela de info de validação */
+.ui-messages-info .ui-icon-close {
+    background-position: initial !important;
+    background-image: url("#{resource['primefaces:img/ui-icon-close.png']}") !important;
+}
+
+/* Ajustando icone para fechar a janela de warn de validação */
+.ui-messages-warn .ui-icon-close {
+    background-position: initial !important;
+    background-image: url("#{resource['primefaces:img/ui-icon-close.png']}") !important;
+}
+
+.ui-messages-warn-summary, 
+.ui-messages-error-summary, 
+.ui-messages-info-summary {
+    margin-left: 0 !important;
+    font-weight: normal !important;
+}
+
+/* Remove o fundo vermelho do label quando ocorre erro na validação */
+label.ui-state-error {
+    background: none !important;
+}
+
+/*-------*/
+/* Growl */
+/*-------*/
+.ui-growl {
+	z-index: 1037 !important;
+}
+
+.ui-growl .ui-growl-info {
+	background-color: #9ccc65 !important;
+	border-color: #9ccc65 !important;
+	background-image: none !important;
+}
+
+.ui-growl .ui-growl-error {
+	background-color: #FC7A7A !important;
+	border-color: #FC7A7A !important;
+	background-image: none !important;
+}
+
+.ui-growl .ui-growl-title {
+	margin-top: 6px;
+}
+
+/* --------- */
+/* DataTable */
+/* --------- */
+
+/* Remove uma linha preta do header das tabelas */
+th[role="columnheader"].ui-state-default {
+    border-color: #ccc !important;
+}
+
+/* Corrige a borda do paginador das datatables */
+div.ui-paginator {
+    border: 1px solid #dddddd !important; 
+    border-top: 0px !important;
+}
+
+/* Corrige o label dos treenodes da arvore de permissoes */
+.ui-treenode-label {
+    position: relative;
+    left: 3px;
+}
+.ui-tree-toggler {
+    position: relative !important;
+}
+
+/* Remove borda do panelgrid*/
+.ui-panelgrid tr, .ui-panelgrid td, .ui-grid-responsive{ 
+	border: none !important;
+}
+
+/* -------- */
+/* Datalist */
+/* -------- */
+
+/* Remove borda do datalist*/
+.ui-datalist .ui-datalist-content { 
+	border: none !important;
+}
+
+.ui-datalist-empty-message {
+	padding: 4px 0px !important;
+}
+
+.ui-datalist-data {
+	padding-left: 15px;
+}
+
+/* customizacao do scroller */
+.ui-datascroller-content {
+    background: none !important;
+    border: none !important;
+    padding: 0px !important;
+}
+
+/*********/
+/* Modal */
+/*********/
+.ui-dialog .ui-widget-overlay, .ui-dialog-mask {
+	z-index: 1030 !important;
+} 
+
+.ui-dialog {
+	z-index: 1035 !important;
+}
+
+.ui-dialog .ui-dialog-titlebar {
+	padding: 6px 15px !important;
+}
+
+/* Cor de fundo do header do modal */
+.ui-dialog > .ui-widget-header {
+	background-color: #3c8dbc !important;
+	border-radius: 0; 
+}
+
+.ui-dialog .ui-dialog-title { 
+	color: #ffffff;
+	font-size: 18px !important; 
+}
+
+.ui-datepicker {
+	z-index: 1037 !important;
+}
+
+.ui-autocomplete-panel { 
+	z-index: 1037 !important;
+}
+
+.ui-dialog .ui-icon-closethick { 
+    background-position: initial !important;
+    background-image: url("#{resource['primefaces:img/ui-icon-close.png']}") !important;	
+}
+
+.ui-dialog-titlebar > .ui-state-hover { 
+	background-color: #3c8dbc !important;
+}
+
+.ui-dialog .ui-outputlabel {
+	font-size: 92.85% !important;  /* 13px */
+}
+
+
+.transparente {
+	border: 0 !important;
+	box-shadow: none !important;
+	background-color: transparent !important;
+}
+
+.transparente tr {
+	background: transparent !important;
+	color: #ffffff !important;
+	text-align: center;
+}
+
+/**************/
+/* FileUpload */
+/**************/
+.ui-fileupload {
+	margin-bottom: 30px;
+}
+.ui-fileupload-buttonbar {
+	background-color: transparent;
+	border-color: transparent;
+}
+
+.ui-fileupload-content {
+	border-radius: 0;
+	position: relative;
+	z-index: 1040;	
+	display: none;
+}
+
+.ui-fileupload-buttonbar > .ui-button > .ui-button-text {
+	margin-top: 4px;
+	font-weight: normal;
+}
+
+.ui-fileupload .ui-progressbar {
+	width: 120px !important;
+}
+
+/* Text-Editor */
+.ql-editing {
+	z-index: 1040 !important;
+}

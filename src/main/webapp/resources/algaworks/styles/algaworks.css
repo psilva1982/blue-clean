@@ -551,8 +551,8 @@ body {
 }
 .aw-label-corner {
   position: absolute;
-  top: 9px;
-  right: 4px;
+  top: 11px;
+  right: 0px;
   padding: 2px 5px;
 }
 .aw-form-control-inline-sm {
@@ -638,4 +638,15 @@ body {
 .aw-checkbox-no-margin {
   margin-top: 0px !important;
   margin-bottom: 0px !important;
+}
+
+.nav-user-dropdown {
+	margin-bottom: 0px !Important;
+	margin-top: 0px !Important;
+	padding-bottom: 9px !Important;
+	padding-top: 4px !Important;
+}
+
+.nav-user-dropdown-image {
+	margin-top: 5px;
 }
