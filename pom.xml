@@ -2,41 +2,68 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 
-	<groupId>com.algaworks</groupId>
-	<artifactId>fork-layout</artifactId>
+	<groupId>blue</groupId>
+	<artifactId>clean</artifactId>
 	<version>1.0.0-SNAPSHOT</version>
 	<packaging>war</packaging>
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		
+		<primefaces.version>6.1</primefaces.version>
+		<primefaces-themes.version>1.0.10</primefaces-themes.version>
+		<bootfaces.version>1.1.3</bootfaces.version>
+		
+		<jsf.version>2.2.9</jsf.version>
+		<weld-cdi.version>2.4.0.Final</weld-cdi.version>
+		
+		<spring-mvc.version>5.0.0.RELEASE</spring-mvc.version>
+		<spring-data-jpa.version>2.0.0.RELEASE</spring-data-jpa.version>
+		<spring-security.version>4.2.3.RELEASE</spring-security.version>
+
+		<hibernate-validator.version>6.0.2.Final</hibernate-validator.version>
+		<jpa-hibernate.version>5.2.10.Final</jpa-hibernate.version>		
+		<mysql-connector-java.version>5.1.44</mysql-connector-java.version>	
+		<flyway-maven-plugin.version>4.2.0</flyway-maven-plugin.version>
+		<hakari.version>2.7.2</hakari.version>
+
+		<jackson-json-databind>2.9.1</jackson-json-databind>
+		<commons-beanutils.version>1.9.3</commons-beanutils.version>
+		
+		<log4j.version>2.9.0</log4j.version>
+		<jcl-over-slf4j.version>1.7.25</jcl-over-slf4j.version>
+				
 	</properties>
 
 	<dependencies>
+	
+		<!-- Primefaces -->
 		<dependency>
 			<groupId>org.primefaces</groupId>
 			<artifactId>primefaces</artifactId>
-			<version>6.1</version>
+			<version>${primefaces.version}</version>
 			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
-		    <groupId>org.primefaces.extensions</groupId>
-		    <artifactId>all-themes</artifactId>
-		    <version>1.0.8</version>
-		    <scope>compile</scope>
+			<groupId>org.primefaces.themes</groupId>
+			<artifactId>all-themes</artifactId>
+			<version>${primefaces-themes.version}</version>
 		</dependency>
-
+		
+		<!-- Bootfaces -->
 		<dependency>
 		    <groupId>net.bootsfaces</groupId>
 		    <artifactId>bootsfaces</artifactId>
-		    <version>1.1.3</version>
+		    <version>${bootfaces.version}</version>
 		    <scope>compile</scope>
 		</dependency>
-
+		
+		<!-- JSF -->
 		<dependency>
 			<groupId>org.glassfish</groupId>
 			<artifactId>javax.faces</artifactId>
-			<version>2.2.9</version>
+			<version>${jsf.version}</version>
 			<scope>compile</scope>
 		</dependency>
 
@@ -46,9 +73,133 @@
 			<version>3.1.0</version>
 			<scope>provided</scope>
 		</dependency>
+	
+		<!-- Bean Validation / Hibernate Validator -->
+		<dependency>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-validator</artifactId>
+			<version>${hibernate-validator.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- JPA / Hibernate -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-entitymanager</artifactId>
+		    <version>${jpa-hibernate.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- Hibernate - Java 8 Support -->
+		<dependency>
+		    <groupId>org.hibernate</groupId>
+		    <artifactId>hibernate-java8</artifactId>
+		    <version>${jpa-hibernate.version}</version>
+		    <scope>compile</scope>		    
+		</dependency>
+
+		<!-- MySQL Driver -->
+		<dependency>
+			<groupId>mysql</groupId>
+			<artifactId>mysql-connector-java</artifactId>
+			<version>${mysql-connector-java.version}</version>
+			<scope>provided</scope>
+		</dependency>
+
+		<!-- Hakari - Connection Pool -->
+		<dependency>
+		    <groupId>com.zaxxer</groupId>
+		    <artifactId>HikariCP</artifactId>
+		    <version>${hakari.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+
+		<!-- Spring Data-JPA -->
+	    <dependency>
+	        <groupId>org.springframework.data</groupId>
+	        <artifactId>spring-data-jpa</artifactId>
+	        <version>${spring-data-jpa.version}</version>
+	        <scope>compile</scope>
+	    </dependency>
+
+		<!-- Spring Security Web -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-web</artifactId>
+		    <version>${spring-security.version}</version>
+		    <scope>compile</scope>
+		</dependency>		
+
+		<!-- Spring Security Config -->
+		<dependency>
+		    <groupId>org.springframework.security</groupId>
+		    <artifactId>spring-security-config</artifactId>
+		    <version>${spring-security.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+
+		<!-- Jackson - JSON -->
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson-json-databind}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- Beans Utils -->
+		<dependency>
+			<groupId>commons-beanutils</groupId>
+			<artifactId>commons-beanutils</artifactId>
+			<version>${commons-beanutils.version}</version>
+			<scope>compile</scope>
+		</dependency>
+
+		<!-- LogJ -->
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-slf4j-impl</artifactId>
+		    <version>${log4j.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-api</artifactId>
+		    <version>${log4j.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+
+		<dependency>
+		    <groupId>org.apache.logging.log4j</groupId>
+		    <artifactId>log4j-core</artifactId>
+		    <version>${log4j.version}</version>
+		    <scope>compile</scope>
+		</dependency>		
+
+		<dependency>
+		    <groupId>org.slf4j</groupId>
+		    <artifactId>jcl-over-slf4j</artifactId>
+		    <version>${jcl-over-slf4j.version}</version>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<!-- Spring MVC -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-web</artifactId>
+			<version>${spring-mvc.version}</version>
+		</dependency>
+
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>${spring-mvc.version}</version>
+		</dependency>
+		
 	</dependencies>
 
 	<build>
+		<finalName>clean</finalName>
 		<plugins>
 			<plugin>
 				<artifactId>maven-compiler-plugin</artifactId>
@@ -58,7 +209,27 @@
 					<target>1.8</target>
 				</configuration>
 			</plugin>
+
+			<plugin>
+				<groupId>org.flywaydb</groupId>
+				<artifactId>flyway-maven-plugin</artifactId>
+				<version>${flyway-maven-plugin.version}</version>
+				<configuration>
+					<driver>com.mysql.jdbc.Driver</driver>
+				</configuration>
+			</plugin>
+			
 		</plugins>
 	</build>
+	
+	<repositories>
+		<!-- Repositorio do Primefaces -->
+		<repository>
+			<id>prime-repo</id>
+			<name>PrimeFaces Maven Repository</name>
+			<url>http://repository.primefaces.org</url>
+			<layout>default</layout>
+		</repository>
+	</repositories>
 
 </project>

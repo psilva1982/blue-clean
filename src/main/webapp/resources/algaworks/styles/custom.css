@@ -1,6 +1,5 @@
 @charset "utf-8";
 
-
 .ui-selectonemenu-trigger {
     width: 30px !important;
     padding: 3px 6px !important;
@@ -10,4 +9,27 @@
 /* Text-Editor */
 .ql-editing {
 	z-index: 1040 !important;
+}
+
+/* Bootstrap - growl */
+.alert-info {
+	border-color: #4CAF50 !important;
+	background: #4CAF50 !important;	
+	color: #ffffff !important;	
+}
+
+.alert-warn {
+	border-color: #156090 !important;
+	background: #186ba0 !important;
+	color: #ffffff !important;
+}
+
+.alert-danger {
+	border-color: #f44336 !important;
+	background: #f44336 !important;
+	color: #ffffff !important;	
+}
+
+.fa .fa-bars:hover {
+	color: #ffffff !important;
 }

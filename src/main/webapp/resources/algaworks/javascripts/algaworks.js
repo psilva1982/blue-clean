@@ -58,13 +58,13 @@ AW.onMenuGroupClick = function(event) {
 
   if (subItems.length) {
     event.preventDefault();
-    $(this).parent().toggleClass('is-expanded');
+    $(this).parent().toggleClass('is-expanded'); 
   }
 };
 
 AW.initMenu = function() {
   $('.js-menu > ul > li > a').bind('click', AW.onMenuGroupClick);
-  $('.aw-menu__item .is-active').parents('.aw-menu__item').addClass('is-expanded is-active');
+  //$('.aw-menu__item .is-active').parents('.aw-menu__item').addClass('is-expanded is-active');
 };
 
 $(function() {
