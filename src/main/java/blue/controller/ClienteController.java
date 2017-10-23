@@ -37,4 +37,13 @@ public class ClienteController implements Serializable {
 	public void setCliente(Cliente cliente) {
 		this.cliente = cliente;
 	}
+	
+	public void salvar() {
+		try {
+			Thread.sleep(100000);
+			
+		}catch (Exception e) {
+			// TODO: handle exception
+		}
+	}
 }

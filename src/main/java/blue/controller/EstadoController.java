@@ -19,6 +19,7 @@ public class EstadoController implements Serializable {
 	private Estados estadosRepository;
 	
 	public List<Estado> getEstados() {
+				
 		return estadosRepository.findAll();
 	}
 }

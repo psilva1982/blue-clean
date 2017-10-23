@@ -688,3 +688,15 @@ body {
 .nav-user-dropdown-image {
 	margin-top: 5px;
 }
+
+.aw-transparente {
+	border: 0 !important;
+	box-shadow: none !important;
+	background-color: transparent !important;
+}
+
+.aw-transparente tr {
+	background: transparent !important;
+	color: #ffffff !important;
+	text-align: center;
+}
