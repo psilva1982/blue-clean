@@ -4,31 +4,39 @@
 	xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd"
 	version="3.1">
 	
-	<!-- Desabilitando o bootstrap do bootfaces -->
+	<!-- Desabilitando o bootstrap do bootfaces  -->
 	<context-param>
 		<param-name>net.bootsfaces.get_bootstrap_from_cdn</param-name>
 		<param-value>true</param-value>
 	</context-param>
-	
-	<!-- Desabilitando o jquery do bootfaces 
+
 	<context-param>
 		<param-name>net.bootsfaces.get_jquery_from_cdn</param-name>
 		<param-value>true</param-value>
 	</context-param>
-	-->
-    
+
+	<!-- 	 
+	<context-param>
+		<param-name>net.bootsfaces.get_jqueryui_from_cdn</param-name>
+		<param-value>true</param-value>
+	</context-param>	
+     -->
+     
 	<context-param>
 		<param-name>primefaces.THEME</param-name>
 		<param-value>bootstrap</param-value>
 	</context-param>
+
 	<context-param>
 		<param-name>primefaces.FONT_AWESOME</param-name>
 		<param-value>true</param-value>
-	</context-param>
+	</context-param>	
+	
 	<context-param>
 		<param-name>javax.faces.PROJECT_STAGE</param-name>
 		<param-value>Development</param-value>
 	</context-param>
+
 	<context-param>
 		<param-name>javax.faces.FACELETS_REFRESH_PERIOD</param-name>
 		<param-value>0</param-value>

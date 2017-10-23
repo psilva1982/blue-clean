@@ -17,7 +17,7 @@
 			<div class="col-md-4 col-xs-12">
 				<ol class="breadcrumb">
 				  <li><a href="/Dashboard.xhtml"><i class="fa fa-home"></i> Dashboard</a></li>
-				  <li><a href="#">Clientes</a></li>
+				  <li><a href="#{request.contextPath}/modulos/PesquisaCliente.xhtml">Clientes</a></li>
 				  <li class="active">Cadastro</li>
 				</ol>
 			</div>
@@ -29,41 +29,54 @@
 	
 	<b:form method="post" >
 			
-		<b:row>
-			<b:column medium-screen="12">
-				<b:inputText id="nome" label="Nome" placeholder="Nome do cliente" >
-					<f:facet name="prepend">
-	            		<b:icon name="user" />
-	        		</f:facet>
+		<div class="row">
+			<div class="col-sm-12 form-group" >
+				<b:inputText id="nome" label="Nome">
+						<f:facet name="prepend">
+							<i class="fa fa-user"/>
+						</f:facet>
 				</b:inputText>
-			</b:column>
-		</b:row>
+			</div>
+		</div>
 		
 		<div class="row">
-			<div class="col-sm-4 form-group">
-				<div class="form-group bw-required">
-					<label for="tipoPessoa" class="control-label">Tipo pessoa</label>
-					<div>
-					
-					</div>
-				</div>					
+			<div class="col-sm-4 form-group bw-required" > 
+				<label for="tipoPessoa">Tipo Pessoa</label>
+				<b:panelGrid columns="2">
+					<b:radiobutton id="tipoPessoa" value="#{clienteController.cliente.tipoPessoa}" styleClass="radio-inline">
+						<f:selectItems value="#{tipoPessoaController.getTipos()}" var="tipo"  itemLabel="#{tipo.descricao}" itemValue="#{tipo}"/>
+					</b:radiobutton>
+				</b:panelGrid>
 			</div>
 			
-			<div class="col-sm-8 form-group bw-required" >
-				<label for="cpfOuCnpj" class="control-label">CPF / CNPJ</label>
-				<input id="cpfOuCnpj" type="text" class="form-control" disabled="disabled" />
+			<div class="col-sm-4 form-group bw-required" >
+				<label for="tipoPessoa" class="control-label">CPF / CNPJ</label>
+				<b:inputText id="cpfOuCnpj" type="text" disabled="true" />
+			</div>
+			
+			<div class="col-sm-4 form-group bw-required" >
+				<label for="dataNascimento" class="control-label">Data de nascimento</label>
+				<b:dateTimePicker id="dataNascimento" format="DD/MM/YYYY"/>
 			</div>
 		</div>
 
 		<div class="row">
 			<div class="col-sm-4 form-group bw-required">
 				<label for="telefone" class="control-label">Telefone</label>
-				<input id="telefone" type="text" class="form-control js-phone-number" />					
+				<b:inputText id="telefone">
+						<f:facet name="prepend">
+							<i class="fa fa-phone"/>
+						</f:facet>				
+				</b:inputText>					
 			</div>
 			
 			<div class="col-sm-8 form-group bw-required" >
 				<label for="email" class="control-label">E-mail</label>
-				<input id="email" type="text" class="form-control" />
+				<b:inputText id="email">
+					<f:facet name="prepend">
+						<span>@</span>
+					</f:facet>
+				</b:inputText>
 			</div>
 		</div>
 
@@ -91,7 +104,7 @@
 			</div>
 			
 			<div class="col-sm-4 form-group bw-required" >
-				<b:selectOneMenu  required="true" label="Estado" >
+				<b:selectOneMenu  required="true" label="Estado" styleClass="form-control">
 					<f:selectItems value="#{estadoController.getEstados()}" var="estado"  itemLabel="#{estado.nome}" itemValue="#{estado.codigo}"/>					
 				</b:selectOneMenu>
 			</div>
@@ -100,9 +113,7 @@
 				<label for="cidade" class="control-label">Cidade</label>
 				<div class="bw-field-action">
 					<input type="hidden" id="codigoCidadeSelecionada"/>
-					
-
-					
+										
 					<div class="bw-field-action__icon js-img-loading" style="display:none">
 						
 					</div>

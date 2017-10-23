@@ -1,6 +1,7 @@
 package blue.model;
 
 import blue.model.validation.group.CnpjGroup;
+
 import blue.model.validation.group.CpfGroup;
 
 public enum TipoPessoa {

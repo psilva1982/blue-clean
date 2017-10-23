@@ -10,7 +10,6 @@ import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.jdbc.datasource.lookup.JndiDataSourceLookup;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.JpaVendorAdapter;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
@@ -21,9 +20,7 @@ import org.springframework.transaction.annotation.EnableTransactionManagement;
 
 import com.zaxxer.hikari.HikariDataSource;
 
-import blue.model.Cliente;
 import blue.repository.Estados;
-
 
 @Configuration
 @ComponentScan(basePackageClasses = Estados.class)
@@ -34,38 +31,42 @@ public class JPAConfig {
 	@Bean
 	public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
 		
-		LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
 		
-		entityManagerFactory.setDataSource(dataSource);
+		factory.setDataSource(dataSource);
+
 		Properties jpaProperties = new Properties();
-		
 		//jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop");
 		//jpaProperties.put("hibernate.show_sql", "true");
-		//jpaProperties.put("hibernate.format_sql", "true");
+		//jpaProperties.put("hibernate.format_sql", "true");		
 		
-		entityManagerFactory.setJpaVendorAdapter(jpaVendorAdapter);
-		entityManagerFactory.setJpaProperties(jpaProperties);
-		entityManagerFactory.setPackagesToScan("blue.model");
-		entityManagerFactory.setPersistenceProvider(new HibernatePersistenceProvider());
-		return entityManagerFactory;
-	}
-
-	@Bean
-	public JpaTransactionManager transactionManager(DataSource dataSource,
-			EntityManagerFactory entityManagerFactory) {
-		JpaTransactionManager transactionManager = new JpaTransactionManager(
-				entityManagerFactory);
-		transactionManager.setDataSource(dataSource);
-		return transactionManager;
+		//factory.setMappingResources("sql/consultas-nativas.xml");			//consultas nativas em arquivos externos
+		
+		factory.setJpaVendorAdapter(jpaVendorAdapter);
+		factory.setJpaProperties(jpaProperties);
+		factory.setPackagesToScan("blue.model");
+		factory.setPersistenceProvider(new HibernatePersistenceProvider());
+		
+		factory.afterPropertiesSet();
+		
+		return factory;
 	}
 	
+	
+	@Bean
+	public JpaTransactionManager transactionManager(DataSource dataSource, EntityManagerFactory entityManagerFactory) {
+		JpaTransactionManager transactionManager = new JpaTransactionManager(entityManagerFactory);
+		transactionManager.setDataSource(dataSource);
+		
+		return transactionManager;
+	}
 	
 	@Bean
 	public DataSource dataSource() {
 		
 		HikariDataSource dataSource = new HikariDataSource();
 		dataSource.setDriverClassName("com.mysql.jdbc.Driver");
-		dataSource.setJdbcUrl("jdbc:mysql://192.168.0.45/blue_clean?useSSL=false");
+		dataSource.setJdbcUrl("jdbc:mysql://192.168.0.45/brewer?useSSL=false");
 		dataSource.setUsername("root");
 		dataSource.setPassword("root");
 		
@@ -83,20 +84,6 @@ public class JPAConfig {
 		return adapter;
 	}	
 	
-	/*
-	
-	@Bean
-	public EntityManagerFactory entityManagerFactory(DataSource dataSource, JpaVendorAdapter jpaVendorAdapter) {
-		LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
-		factory.setDataSource(dataSource);
-		factory.setJpaVendorAdapter(jpaVendorAdapter);
-		factory.setPackagesToScan(Cliente.class.getPackage().getName());	//nome do pacote onde está o model
-		//factory.setMappingResources("sql/consultas-nativas.xml");			//consultas nativas em arquivos externos
-		factory.afterPropertiesSet();
-		
-		return factory.getObject();
-	}
-	
 	@Bean
 	public PlatformTransactionManager transactionManager(EntityManagerFactory entityManagerFactory) { 
 		JpaTransactionManager transactionManager = new JpaTransactionManager();
@@ -104,5 +91,5 @@ public class JPAConfig {
 		
 		return transactionManager;
 	}
-	*/
+	
 }

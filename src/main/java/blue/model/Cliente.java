@@ -1,6 +1,9 @@
 package blue.model;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.LocalDate;
+
 import javax.persistence.Column;
 import javax.persistence.Embedded;
 import javax.persistence.Entity;
@@ -13,6 +16,7 @@ import javax.persistence.PostLoad;
 import javax.persistence.PrePersist;
 import javax.persistence.PreUpdate;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -63,6 +67,12 @@ public class Cliente implements Serializable {
 	@Valid
 	private Endereco endereco;
 
+	@Transient
+	private LocalDate nascimento;
+	
+	@Transient
+	private BigDecimal credito;
+	
 	@PrePersist @PreUpdate
 	private void preInserPreUpdate() {
 		this.cpfOuCnpj = TipoPessoa.removeFormatacao(this.cpfOuCnpj);
@@ -71,6 +81,22 @@ public class Cliente implements Serializable {
 	@PostLoad
 	private void postLoad() {
 		this.cpfOuCnpj = this.tipoPessoa.formatar(this.cpfOuCnpj);
+	}
+	
+	public BigDecimal getCredito() {
+		return credito;
+	}
+	
+	public void setCredito(BigDecimal credito) {
+		this.credito = credito;
+	}
+	
+	public LocalDate getNascimento() {
+		return nascimento;
+	}
+	
+	public void setNascimento(LocalDate nascimento) {
+		this.nascimento = nascimento;
 	}
 	
 	public Long getCodigo() {

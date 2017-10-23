@@ -42,6 +42,7 @@ AW.hideLoadingComponent = function() {
   $('.js-loading-component').fadeOut('fast');
 };
 
+/*
 AW.initStickyTableHeaders = function() {
   if ($(window).width() >= 992) { 
     var stickyRef = $('.js-sticky-reference');
@@ -52,6 +53,7 @@ AW.initStickyTableHeaders = function() {
     }
   }
 };
+*/
 
 AW.onMenuGroupClick = function(event) {
   var subItems = $(this).parent().find('ul');
@@ -73,10 +75,7 @@ $(function() {
   }
 
   AW.initMenu();
-  AW.initStickyTableHeaders();
   
-  // Enable Bootstrap tooltip
-  $('.js-tooltip').tooltip();
   
   // Bind events
   $('.js-sidebar-toggle').bind('click', AW.onSidebarToggleRequest);

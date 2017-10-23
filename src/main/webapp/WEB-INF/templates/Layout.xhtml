@@ -13,16 +13,15 @@
 
 	<title>Blue Clean</title>
 
+	<h:outputStylesheet library="bootstrap" name="styles/bootstrap.css" />
 	<h:outputStylesheet library="algaworks" name="styles/algaworks.css" />
-	<h:outputStylesheet library="algaworks" name="styles/vendors.css" />
-	<h:outputStylesheet library="algaworks" name="styles/custom.css" />
+	<h:outputStylesheet library="layout" name="styles/custom.css" />
 	
+	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />	 		
 	
-	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />	 
-		 
-	<h:outputScript target="body" library="algaworks" name="javascripts/vendors.js" />	
+	<h:outputScript target="body" library="bootstrap" name="javascripts/bootstrap.js" />
 	<h:outputScript target="body" library="algaworks" name="javascripts/algaworks.js" />
-	<h:outputScript target="body" library="algaworks" name="javascripts/blue.menu.js"/>
+	<h:outputScript target="body" library="layout" name="javascripts/blue.menu.js"/>
 
 </h:head>
 

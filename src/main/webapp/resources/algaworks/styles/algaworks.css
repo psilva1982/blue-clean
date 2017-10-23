@@ -628,7 +628,8 @@ body {
   justify-content: flex-start;
   align-items: center;
   margin: 0;
-  height: 80px;
+  margin-top: 18px;
+  height: 45px;
   color: #333333;
 }
 
@@ -642,7 +643,7 @@ body {
 	display: flex;
 	justify-content: flex-end;
 	align-items: right;	
-	margin-top: 25px;
+	margin-top: 27px;
 }
 
 @media (max-width: 992px) {

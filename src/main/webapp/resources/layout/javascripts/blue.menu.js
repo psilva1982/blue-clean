@@ -2,10 +2,8 @@ var Blue = Blue || {}
 
 Blue.Menu = (function() {
 
-   function Menu() {
+   function Menu() {}
      
-   }
-
    Menu.prototype.iniciar = function() {      
 	  var urlAtual = window.location.href;
        montaMenu(urlAtual);

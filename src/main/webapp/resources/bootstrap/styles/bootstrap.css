@@ -2646,7 +2646,7 @@ input[type="search"] {
   }
 }
 .form-group {
-  margin-bottom: 15px;
+  margin-bottom: 7px;
 }
 .radio,
 .checkbox {
@@ -6932,6 +6932,7 @@ button.close {
   position: relative;
   padding-left: 5px;
 }
+/*
 .radio label::before {
   content: "";
   display: inline-block;
@@ -6947,6 +6948,7 @@ button.close {
   -o-transition: border 0.15s ease-in-out;
   transition: border 0.15s ease-in-out;
 }
+*/
 .radio label::after {
   display: inline-block;
   position: absolute;
@@ -6968,7 +6970,7 @@ button.close {
   transition: transform 0.1s cubic-bezier(0.8, -0.33, 0.2, 1.33);
 }
 .radio input[type="radio"] {
-  opacity: 0;
+  /*opacity: 0*/;
   z-index: 1;
 }
 .radio input[type="radio"]:focus + label::before {
