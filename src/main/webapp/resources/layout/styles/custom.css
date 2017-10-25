@@ -1,11 +1,5 @@
 @charset "utf-8";
 
-.ui-selectonemenu-trigger {
-    width: 30px !important;
-    padding: 3px 6px !important;
-    border-radius: 0 !important;
-}
-
 /* Text-Editor */
 .ql-editing {
 	z-index: 1040 !important;
@@ -32,4 +26,46 @@
 
 .fa .fa-bars:hover {
 	color: #ffffff !important;
+}
+
+/* =========================== 
+ Primefaces
+============================== */
+/* Remove o fundo vermelho do label quando ocorre erro na validação */
+label.ui-state-error {
+    background: none !important;
+}
+
+/* outputlabel */
+.ui-outputlabel {
+	font-size: 1em !important;
+}
+
+/* Radio Buttom */ 
+.ui-selectoneradio label {
+	font-weight: normal !important;
+}
+
+.ui-icon-bullet {
+	background-position: -81px -145px !important;
+}
+
+/* Select One Menu */
+.ui-selectonemenu-trigger {
+    width: 30px !important;
+    padding: 3px 6px !important;
+    border-radius: 1 !important;
+}
+
+.ui-selectonemenu {
+    height: 32px;
+    display: block !important;
+    border-color: rgb(204, 204, 204) !important;
+    border-radius: 1
+}
+
+.ui-selectonemenu-label {
+	color: rgb(85, 85, 85) !important; 
+	font-size: 13px !important;
+    padding: 6px !important;
 }

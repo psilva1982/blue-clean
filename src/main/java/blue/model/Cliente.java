@@ -3,6 +3,7 @@ package blue.model;
 import java.io.Serializable;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.Date;
 
 import javax.persistence.Column;
 import javax.persistence.Embedded;
@@ -68,7 +69,7 @@ public class Cliente implements Serializable {
 	private Endereco endereco;
 
 	@Transient
-	private LocalDate nascimento;
+	private Date nascimento;
 	
 	@Transient
 	private BigDecimal credito;
@@ -91,11 +92,11 @@ public class Cliente implements Serializable {
 		this.credito = credito;
 	}
 	
-	public LocalDate getNascimento() {
+	public Date getNascimento() {
 		return nascimento;
 	}
 	
-	public void setNascimento(LocalDate nascimento) {
+	public void setNascimento(Date nascimento) {
 		this.nascimento = nascimento;
 	}
 	
@@ -144,6 +145,10 @@ public class Cliente implements Serializable {
 	
 	public String getCpfOuCnpjSemFormatacao() {
 		return TipoPessoa.removeFormatacao(this.cpfOuCnpj);
+	}
+	
+	public boolean isFisica() {
+		return tipoPessoa.equals(TipoPessoa.FISICA) ? true : false;
 	}
 	
 	public boolean isNovo() {

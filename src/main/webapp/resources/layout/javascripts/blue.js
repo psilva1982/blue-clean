@@ -32,9 +32,10 @@ Blue.Menu = (function() {
 
 }());
 
+
 $(function() {
 
    var menu = new Blue.Menu();
    menu.iniciar();
-
+   
 });

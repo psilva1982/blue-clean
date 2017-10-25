@@ -13,17 +13,11 @@
 	</f:facet>
 
 	<title>Blue Clean</title>
-
+	
 	<h:outputStylesheet library="bootstrap" name="styles/bootstrap.css" />
 	<h:outputStylesheet library="algaworks" name="styles/algaworks.css" />
 	<h:outputStylesheet library="layout" name="styles/custom.css" />
 	
-	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />	 		
-	
-	<h:outputScript target="body" library="bootstrap" name="javascripts/bootstrap.js" />
-	<h:outputScript target="body" library="algaworks" name="javascripts/algaworks.js" />
-	<h:outputScript target="body" library="layout" name="javascripts/blue.menu.js"/>
-
 </h:head>
 
 <h:body>
@@ -38,18 +32,42 @@
 		<section class=" aw-layout-content js-content">
 			<ui:insert name="content" />
 		</section>
-
 	</div>
 
 	<h:form>
+		<!-- 
 		<p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()"/>
 			 
 		<p:dialog styleClass="aw-transparente" widgetVar="statusDialog" modal="true" visible="false" draggable="false" closable="false" resizable="false" showHeader="false">
 			<h:panelGrid columns="1" styleClass="aw-transparente">
 				<h:outputText styleClass="fa fa-spinner fa-pulse fa-4x fa-fw"/>
 			</h:panelGrid>
-		</p:dialog>		
-	</h:form>
+		</p:dialog>
+		 -->		
+
+		<p:ajaxStatus>	 
+			    <f:facet name="default">
+	        		<h:outputText value="" />
+	    		</f:facet>
+			    <f:facet name="start">
+	        		<div class="aw-carregando-box">
+	        			<span><i class="fa fa-spinner fa-pulse fa-fw"/> carregando...</span>
+	   				</div>
+	   			</f:facet>
+	   		    <f:facet name="complete">
+	        		<h:outputText value="" />
+	    		</f:facet>	
+	    </p:ajaxStatus>	
+		 
+	</h:form>	
+
+	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />	 		
+	 
+	<h:outputScript library="bootstrap" name="javascripts/bootstrap.js" />
+	<h:outputScript library="algaworks" name="javascripts/algaworks.js" />
+	<h:outputScript library="layout" name="javascripts/blue.js"/>
+	
+	<ui:insert name="extra"/>
 	
 </h:body>
 

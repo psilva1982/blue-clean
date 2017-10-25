@@ -693,10 +693,33 @@ body {
 	border: 0 !important;
 	box-shadow: none !important;
 	background-color: transparent !important;
+	z-index: 1090 !important;
 }
 
 .aw-transparente tr {
 	background: transparent !important;
 	color: #ffffff !important;
 	text-align: center;
+}
+
+.aw-carregando-box { 
+      position: absolute; /* posição absoluta ao elemento pai, neste caso o BODY */
+      /* Posiciona no meio, tanto em relação a esquerda como ao topo */
+      right: 0%; 
+      top: 0%;
+      width: 110px; /* Largura da DIV */
+      height: 20px; /* Altura da DIV */
+      /* A margem a esquerda deve ser menos a metade da largura */
+      /* A margem ao topo deve ser menos a metade da altura */
+      /* Fazendo isso, centralizará a DIV */
+      padding: 2px;
+      margin-right: 0;
+      margin-top: 140px;
+      
+      background-color: #f44336;
+      border: 1px;
+      border-color: #ffffff;
+      color: #FFF;
+      text-align: center; /* Centraliza o texto */
+      z-index: 1090; /* Faz com que fique sobre todos os elementos da página */	
 }

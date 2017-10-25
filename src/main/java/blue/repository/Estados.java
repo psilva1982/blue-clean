@@ -10,5 +10,5 @@ import blue.model.Estado;
 @Repository
 public interface Estados extends JpaRepository<Estado, Long> {
 
-	
+	public Optional<Estado> findByCodigo(Long codigo);
 }

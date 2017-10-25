@@ -10,12 +10,11 @@ import javax.validation.constraints.NotBlank;
 @Embeddable
 public class Endereco {
 	
-	@NotBlank
+	@NotBlank(message = "Informe o endereço")
 	private String logradouro;
-	@NotBlank
 	private String numero;
 	private String complemento;
-	@NotBlank
+	@NotBlank(message = "Informe o cep do endereço")
 	private String cep; 
 	
 	@ManyToOne(fetch = FetchType.LAZY)

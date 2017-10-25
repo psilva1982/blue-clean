@@ -14,7 +14,7 @@
 		<primefaces-themes.version>1.0.10</primefaces-themes.version>
 		<bootfaces.version>1.1.3</bootfaces.version>
 		
-		<jsf.version>2.2.9</jsf.version>
+		<jsf.version>2.3.3</jsf.version>
 		<weld-cdi.version>2.4.0.Final</weld-cdi.version>
 		
 		<spring-mvc.version>5.0.0.RELEASE</spring-mvc.version>
@@ -33,6 +33,8 @@
 		<log4j.version>2.9.0</log4j.version>
 		<jcl-over-slf4j.version>1.7.25</jcl-over-slf4j.version>
 				
+		<lombok.version>1.16.18</lombok.version>
+				
 	</properties>
 
 	<dependencies>
@@ -50,6 +52,7 @@
 			<artifactId>all-themes</artifactId>
 			<version>${primefaces-themes.version}</version>
 		</dependency>
+		
 		
 		<!-- Bootfaces -->
 		<dependency>
@@ -74,12 +77,13 @@
 			<scope>provided</scope>
 		</dependency>
 
+      <!-- Weld CDI --> 
 		<dependency>
-		    <groupId>javax.enterprise</groupId>
-		    <artifactId>cdi-api</artifactId>
-		    <version>2.0</version>
+		   <groupId>org.jboss.weld.servlet</groupId>
+		   <artifactId>weld-servlet</artifactId>
+		   <version>${weld-cdi.version}</version>
 		</dependency>
-	
+		
 		<!-- Bean Validation / Hibernate Validator -->
 		<dependency>
 			<groupId>org.hibernate</groupId>
@@ -189,7 +193,7 @@
 		    <scope>compile</scope>
 		</dependency>
 		
-		<!-- Spring MVC -->
+		<!-- Spring MVC 
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-web</artifactId>
@@ -201,7 +205,15 @@
 			<artifactId>spring-webmvc</artifactId>
 			<version>${spring-mvc.version}</version>
 		</dependency>
-		
+		-->
+
+		<!-- Lombok -->	
+		<dependency>
+		    <groupId>org.projectlombok</groupId>
+		    <artifactId>lombok</artifactId>
+		    <version>${lombok.version}</version>
+		</dependency>
+				
 	</dependencies>
 
 	<build>

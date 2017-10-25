@@ -8,6 +8,10 @@
 	
 <ui:define name="content">
 
+<f:metadata>
+	<f:viewAction action="#{clienteController.preparaCadastro()}" />
+</f:metadata>
+
 <div class="page-header">
 	<div class="container-fluid">
 		<div class="row">
@@ -27,106 +31,128 @@
 
 <div class="container-fluid">
 	
-	<b:form method="post" >
-			
+	<h:form method="post" id="frm">
+		
+		<b:messages/>
+		
+		<b:growl />
+					
 		<div class="row">
-			<div class="col-sm-12 form-group" >
-				<b:inputText id="nome" label="Nome">
+			<b:column mediumScreen="12">
+				<b:inputText id="nome" label="Nome" value="#{clienteController.cliente.nome}">
 						<f:facet name="prepend">
 							<i class="fa fa-user"/>
 						</f:facet>
 				</b:inputText>
-			</div>
+			</b:column>
 		</div>
 		
 		<div class="row">
-			<div class="col-sm-4 form-group bw-required" > 
-				<label for="tipoPessoa">Tipo Pessoa</label>
-				<b:panelGrid columns="2">
-					<b:radiobutton id="tipoPessoa" value="#{clienteController.cliente.tipoPessoa}" styleClass="radio-inline">
-						<f:selectItems value="#{tipoPessoaController.getTipos()}" var="tipo"  itemLabel="#{tipo.descricao}" itemValue="#{tipo}"/>
-					</b:radiobutton>
-				</b:panelGrid>
-			</div>
+			<b:column mediumScreen="4"> 
+				<p:outputLabel for="tipoPessoa" value="Tipo Pessoa"/>
+				<p:selectOneRadio id="tipoPessoa" value="#{clienteController.cliente.tipoPessoa}" 
+					 label="Tipo Pessoa" >
+					
+					<p:ajax event="change" listener="#{clienteController.selecionaTipoDocumento()}" 
+						update="cpfOuCnpj" process="@this"/>
+					
+					<f:selectItems value="#{tipoPessoaController.getTipos()}" var="tipo" 
+						itemLabel="#{tipo.descricao}" itemValue="#{tipo}"/>
+				
+				</p:selectOneRadio>
+			</b:column>
 			
-			<div class="col-sm-4 form-group bw-required" >
-				<label for="tipoPessoa" class="control-label">CPF / CNPJ</label>
-				<b:inputText id="cpfOuCnpj" type="text" disabled="true" />
-			</div>
+			<b:column mediumScreen="4" >
+				
+				<b:inputText id="cpfOuCnpj" type="text" label="#{clienteController.labelDocumento}" 
+					mask="#{clienteController.maskDocumento}" 
+					disabled="#{clienteController.desabilitaDocumento}" 
+					value="#{clienteController.cliente.cpfOuCnpj}"/>
+				
+			</b:column>
 			
-			<div class="col-sm-4 form-group bw-required" >
-				<label for="dataNascimento" class="control-label">Data de nascimento</label>
-				<b:dateTimePicker id="dataNascimento" format="DD/MM/YYYY"/>
-			</div>
+			<b:column mediumScreen="4">
+				<b:dateTimePicker id="dataNascimento" format="DD/MM/YYYY" label="Data de nascimento" 
+				 placeholder="DD/MM/AAAA"  allow-input-toggle="true" styleClass="js-bloqueado"
+				 value="#{clienteController.cliente.nascimento}"/>
+			</b:column>
 		</div>
 
 		<div class="row">
-			<div class="col-sm-4 form-group bw-required">
-				<label for="telefone" class="control-label">Telefone</label>
-				<b:inputText id="telefone">
+			<b:column mediumScreen="4">
+				<b:inputText id="telefone" label="Telefone" mask="(99) 9{4,5}-9999"
+					value="#{clienteController.cliente.telefone}">
 						<f:facet name="prepend">
 							<i class="fa fa-phone"/>
 						</f:facet>				
 				</b:inputText>					
-			</div>
+			</b:column>
 			
-			<div class="col-sm-8 form-group bw-required" >
-				<label for="email" class="control-label">E-mail</label>
-				<b:inputText id="email">
+			<b:column mediumScreen="8">
+				<b:inputText id="email" label="E-mail" mask="email" required="true"
+					value="#{clienteController.cliente.email}">
 					<f:facet name="prepend">
 						<span>@</span>
 					</f:facet>
 				</b:inputText>
-			</div>
+			</b:column>
 		</div>
 
 		<div class="row">
-			<div class="col-sm-4 form-group bw-required" >
-				<label for="logradouro" class="control-label">Logradouro</label>
-				<input id="logradouro" type="text" class="form-control" />					
-			</div>
+			<b:column mediumScreen="4">
+				<b:inputText id="logradouro" type="text" label="Logradouro" 
+					value="#{clienteController.cliente.endereco.logradouro}"/>
+									
+			</b:column>
 			
-			<div class="col-sm-4 form-group bw-required" >
-				<label for="numero" class="control-label">Número</label>
-				<input id="numero" type="text" class="form-control" />
-			</div>
-
-			<div class="col-sm-4 form-group">
-				<label for="complemento">Complemento</label>
-				<input id="complemento" type="text" class="form-control" />
-			</div>
+			<b:column mediumScreen="4">
+				<b:inputText id="numero" type="text" label="Número"
+					value="#{clienteController.cliente.endereco.numero}"/>
+			</b:column>
+			
+			<b:column mediumScreen="4">
+				<b:inputText id="complemento" type="text" label="Complemento"
+					value="#{clienteController.cliente.endereco.complemento}"/>
+			</b:column>
 		</div>	
 
 		<div class="row">
-			<div class="col-sm-4 form-group bw-required" >
-				<label for="cep" class="control-label">CEP</label>
-				<input id="cep" type="text" class="form-control " />					
+			<div class="col-sm-4" >
+				<b:inputText id="cep" type="text" label="CEP" mask="99999-999"
+					value="#{clienteController.cliente.endereco.cep}"/>					
 			</div>
 			
 			<div class="col-sm-4 form-group bw-required" >
-				<b:selectOneMenu  required="true" label="Estado" styleClass="form-control">
-					<f:selectItems value="#{estadoController.getEstados()}" var="estado"  itemLabel="#{estado.nome}" itemValue="#{estado.codigo}"/>					
+				<b:selectOneMenu  label="Estado" value="#{estadoController.estado}" id="estado" 
+					onchange="ajax:estadoController.carregarCidades()" update="cidade" process="@this">
+					
+					<f:selectItem itemLabel="Selecione um estado"/>
+					<f:selectItems value="#{estadoController.getEstados()}" var="item"  itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
 				</b:selectOneMenu>
 			</div>
-
+			
 			<div class="col-sm-4 form-group bw-required" >
-				<label for="cidade" class="control-label">Cidade</label>
-				<div class="bw-field-action">
-					<input type="hidden" id="codigoCidadeSelecionada"/>
-										
-					<div class="bw-field-action__icon js-img-loading" style="display:none">
-						
-					</div>
-				</div>	
+				<b:selectOneMenu id="cidade" label="Cidade" value="#{clienteController.cliente.endereco.cidade}">
+					<f:selectItem itemLabel="Selecione uma cidade"/>
+					<f:selectItems value="#{estadoController.listaCidades}" var="item" itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
+				</b:selectOneMenu>				
+					
 			</div>
-		</div>				
-
-		<div class="form-group">
-			<p:commandButton actionListener="#{clienteController.salvar()}" value="Salvar" icon="fa fa-floppy-o"></p:commandButton>
 		</div>
+		<b:row>
+			<b:column mediumScreen="12">
+				<p:commandButton action="#{clienteController.salvar()}" id="salvar-btn"
+					value="Salvar" process="@form" update="@form"></p:commandButton>
+			</b:column>
+		</b:row>
 		
-	</b:form>
+	</h:form>
 </div>
+
+</ui:define>
+
+<ui:define name="extra">
+
 
 </ui:define>
 

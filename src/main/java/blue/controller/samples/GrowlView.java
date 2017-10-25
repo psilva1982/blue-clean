@@ -3,20 +3,14 @@ package blue.controller.samples;
 import java.io.Serializable;
 
 
+
 import javax.faces.application.FacesMessage;
-import javax.faces.bean.ManagedBean;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
+import javax.inject.Named;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
-import blue.repository.Estados;
-import blue.service.CadastroEstadoService;
-
-@Component
-@Scope("request")
+@Named
+@ViewScoped
 public class GrowlView implements Serializable {
     
 	private static final long serialVersionUID = 1L;
