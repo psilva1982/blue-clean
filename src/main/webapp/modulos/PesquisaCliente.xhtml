@@ -8,6 +8,10 @@
 	
 <ui:define name="content">
 
+<f:metadata>
+	<f:viewAction action="#{clienteController.listarClientes}" />
+</f:metadata>
+
 <div class="page-header">
 	<div class="container-fluid">
 		<div class="row">
@@ -31,25 +35,21 @@
 		
 		<div class="col-md-12">
 
-			<p:dataTable var="c" value="#{clienteController.listaTodos()}">
-
-			    <p:column headerText="Nome">
-			        <h:outputText value="#{c.nome}" />
-			    </p:column>
-
-			    <p:column headerText="Tipo">
-			        <h:outputText value="#{c.tipoPessoa.descricao}" />
-			    </p:column>
-			 
-			    <p:column headerText="E-mail">
-			        <h:outputText value="#{c.email}" />
-			    </p:column>
-			 
-			    <p:column headerText="Telefone">
-			        <h:outputText value="#{c.telefone}" />
-			    </p:column>
-			 
-			</p:dataTable>
+			<b:dataTable var="c" value="#{clienteController.listaClientes}" 
+			    	
+			    	fixedHeader="true" scroll-size="500px" scroll-x="false"
+					customLangUrl="#{resource['/bootfaces/DataTable_pt-BR.json']}"
+					 searching="false">
+				
+				<b:dataTableColumn value="#{c.nome}"/>
+				<b:dataTableColumn value="#{c.tipoPessoa.descricao}" label="Descrição"/>
+				<b:dataTableColumn value="#{c.email}" label="E-mail"/>
+				<b:dataTableColumn value="#{c.telefone}" label="Telefone" />
+				<b:dataTableColumn style="text-align: center" label="">
+					<span><i class="fa fa-pencil"></i></span>
+			 		<span><i class="fa fa-trash"></i></span>
+			 	</b:dataTableColumn>
+			</b:dataTable>
 				
 		</div>
 		

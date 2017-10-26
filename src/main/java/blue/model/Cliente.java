@@ -60,20 +60,20 @@ public class Cliente implements Serializable {
 	@NotBlank(message = "Informe o telefone de contato")
 	private String telefone;
 	
+	@NotBlank(message = "Informe o e-mail de contato")
 	@Email(message = "Informe um e-mail válido")
 	private String email;
 	
+	private LocalDate nascimento;
+	
+	@Column(name = "credito_aprovado")
+	private BigDecimal credito;
+
 	@JsonIgnore
 	@Embedded
 	@Valid
 	private Endereco endereco;
 
-	@Transient
-	private Date nascimento;
-	
-	@Transient
-	private BigDecimal credito;
-	
 	@PrePersist @PreUpdate
 	private void preInserPreUpdate() {
 		this.cpfOuCnpj = TipoPessoa.removeFormatacao(this.cpfOuCnpj);
@@ -92,11 +92,11 @@ public class Cliente implements Serializable {
 		this.credito = credito;
 	}
 	
-	public Date getNascimento() {
+	public LocalDate getNascimento() {
 		return nascimento;
 	}
 	
-	public void setNascimento(Date nascimento) {
+	public void setNascimento(LocalDate nascimento) {
 		this.nascimento = nascimento;
 	}
 	

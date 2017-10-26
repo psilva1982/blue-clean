@@ -33,9 +33,9 @@
 	
 	<h:form method="post" id="frm">
 		
-		<b:messages/>
+		<b:messages severity="error, warn"/>
 		
-		<b:growl />
+		<b:growl severity="info"/>
 					
 		<div class="row">
 			<b:column mediumScreen="12">
@@ -49,9 +49,9 @@
 		
 		<div class="row">
 			<b:column mediumScreen="4"> 
-				<p:outputLabel for="tipoPessoa" value="Tipo Pessoa"/>
+				<p:outputLabel for="tipoPessoa" value="Tipo Pessoa *"/>
 				<p:selectOneRadio id="tipoPessoa" value="#{clienteController.cliente.tipoPessoa}" 
-					 label="Tipo Pessoa" >
+					 label="Tipo Pessoa">
 					
 					<p:ajax event="change" listener="#{clienteController.selecionaTipoDocumento()}" 
 						update="cpfOuCnpj" process="@this"/>
@@ -73,7 +73,7 @@
 			
 			<b:column mediumScreen="4">
 				<b:dateTimePicker id="dataNascimento" format="DD/MM/YYYY" label="Data de nascimento" 
-				 placeholder="DD/MM/AAAA"  allow-input-toggle="true" styleClass="js-bloqueado"
+				 placeholder="DD/MM/AAAA"  allow-input-toggle="true" converter="localDateConverter"
 				 value="#{clienteController.cliente.nascimento}"/>
 			</b:column>
 		</div>
@@ -89,7 +89,7 @@
 			</b:column>
 			
 			<b:column mediumScreen="8">
-				<b:inputText id="email" label="E-mail" mask="email" required="true"
+				<b:inputText id="email" label="E-mail" mask="email"
 					value="#{clienteController.cliente.email}">
 					<f:facet name="prepend">
 						<span>@</span>
@@ -124,6 +124,7 @@
 			
 			<div class="col-sm-4 form-group bw-required" >
 				<b:selectOneMenu  label="Estado" value="#{estadoController.estado}" id="estado" 
+					required="true" required-message="Selecione um estado"
 					onchange="ajax:estadoController.carregarCidades()" update="cidade" process="@this">
 					
 					<f:selectItem itemLabel="Selecione um estado"/>
@@ -132,7 +133,9 @@
 			</div>
 			
 			<div class="col-sm-4 form-group bw-required" >
-				<b:selectOneMenu id="cidade" label="Cidade" value="#{clienteController.cliente.endereco.cidade}">
+				<b:selectOneMenu id="cidade" label="Cidade" value="#{clienteController.cliente.endereco.cidade}" 
+					disabled="#{estadoController.bloqueiaCidade}">
+					
 					<f:selectItem itemLabel="Selecione uma cidade"/>
 					<f:selectItems value="#{estadoController.listaCidades}" var="item" itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
 				</b:selectOneMenu>				
@@ -141,8 +144,15 @@
 		</div>
 		<b:row>
 			<b:column mediumScreen="12">
-				<p:commandButton action="#{clienteController.salvar()}" id="salvar-btn"
-					value="Salvar" process="@form" update="@form"></p:commandButton>
+				<b:commandButton actionListener="#{clienteController.salvar()}" id="salvar-btn" look="primary"
+					value="Salvar" process="@form" update="@form" iconAwesome="floppy-o" style="margin-right: 5px"/>
+
+				<b:commandButton action="#{clienteController.preparaCadastro}" actionListener="#{estadoController.init}"
+					 id="cancelar-btn" look="danger"
+					value="Cancelar" process="@this" update="@form" iconAwesome="close" style="margin-right: 5px"/>		
+				
+			
+											
 			</b:column>
 		</b:row>
 		

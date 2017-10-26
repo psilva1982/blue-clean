@@ -1,14 +1,19 @@
 package blue.model;
 
+import java.io.Serializable;
+
 import javax.persistence.Embeddable;
 import javax.persistence.FetchType;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 @Embeddable
-public class Endereco {
+public class Endereco implements Serializable {
+	
+	private static final long serialVersionUID = 1L; 
 	
 	@NotBlank(message = "Informe o endereço")
 	private String logradouro;
@@ -17,6 +22,7 @@ public class Endereco {
 	@NotBlank(message = "Informe o cep do endereço")
 	private String cep; 
 	
+	@NotNull(message = "Selecione uma cidade")
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "cidade")
 	private Cidade cidade;

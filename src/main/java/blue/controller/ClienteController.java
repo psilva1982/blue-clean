@@ -1,15 +1,24 @@
 package blue.controller;
 
 import java.io.Serializable;
+import java.math.BigDecimal;
+import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Optional;
 
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
+
+import blue.helper.generator.ClienteGenerator;
 import blue.model.Cidade;
 import blue.model.Cliente;
 import blue.model.Endereco;
+import blue.repository.Cidades;
 import blue.repository.Clientes;
 import blue.service.CadastroClienteService;
 import blue.service.exception.CpfCnpjClienteJaCadastradoException;
@@ -27,7 +36,8 @@ public class ClienteController implements Serializable {
 	private Endereco endereco;
 	private Cliente cliente;
 	private Cidade cidade; 
-	
+	private List<Cliente> listaClientes = new ArrayList<Cliente>();
+		
 	private String labelDocumento;
 	private String maskDocumento;
 	private boolean desabilitaDocumento;
@@ -36,11 +46,13 @@ public class ClienteController implements Serializable {
 	private Clientes clientes;
 	
 	@Inject
+	private Cidades cidades;
+	
+	@Inject
 	private CadastroClienteService cadastroClienteService;
 			
 	public void preparaCadastro() {
 		cliente = new Cliente();
-		
 		cliente.setEndereco(new Endereco());
 		labelDocumento = "CPF / CNPJ";
 		desabilitaDocumento = true; 
@@ -62,21 +74,11 @@ public class ClienteController implements Serializable {
 	public void salvar() {
 		
 		try {
+			
+			cliente.setCredito(new BigDecimal("0.0"));
+			
 			cadastroClienteService.salvar(cliente);
-			
-			/*
-			System.out.println("Nome: " +cliente.getNome());
-			System.out.println("Tipo: " +cliente.getTipoPessoa().getDescricao());
-			System.out.println("Documento: " +cliente.getCpfOuCnpj());
-			System.out.println("Telefone: " +cliente.getTelefone());
-			System.out.println("Email: " +cliente.getEmail());
-			System.out.println("Logradouro: " +cliente.getEndereco().getLogradouro());
-			System.out.println("Número: " +cliente.getEndereco().getNumero());
-			System.out.println("Complemento: " +cliente.getEndereco().getComplemento());
-			System.out.println("Cep: " +cliente.getEndereco().getCep());
-			System.out.println("Cidade: " +cliente.getEndereco().getCidade().getNome());
-			*/
-			
+						
 	        FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso", "Cliente cadastrado com sucesso"));		
 			
@@ -86,6 +88,35 @@ public class ClienteController implements Serializable {
 	        FacesContext context = FacesContext.getCurrentInstance();
 	        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_ERROR,"Erro", e.getMessage()));
 		}
-
 	}
+	
+	public void listarClientes() {
+		this.listaClientes = clientes.findAll();
+	}
+	/*
+	public void gerarClientes() {
+		
+		Optional<Cidade> cidade = cidades.findById(new Long(1));
+		
+		ClienteGenerator gen = new ClienteGenerator();
+		
+		List<Cliente> novos = gen.gerarQuantos(120);
+		
+		for(Cliente c : novos) {
+			
+			try {
+				c.getEndereco().setCidade(cidade.get());
+				c.setCredito(new BigDecimal("0.0"));
+				cadastroClienteService.salvar(c);
+			
+			}catch (Exception e) {
+				e.printStackTrace();
+			}
+			
+		}
+		
+        FacesContext context = FacesContext.getCurrentInstance();
+        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso", "Operação realizada com sucesso"));
+	}
+	*/
 }

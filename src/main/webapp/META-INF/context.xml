@@ -3,7 +3,7 @@
       auth="Container"
       type="javax.enterprise.inject.spi.BeanManager"
       factory="org.jboss.weld.resources.ManagerObjectFactory"/>
-
+	
     <Resource name="jdbc/blueDB" auth="Container" 
     	factory="com.zaxxer.hikari.HikariJNDIFactory"
     	type="javax.sql.DataSource"
@@ -15,5 +15,5 @@
       	dataSource.implicitCachingEnabled="true" 
       	dataSource.user="root"
       	dataSource.password="root" />
-      
+       
 </Context>

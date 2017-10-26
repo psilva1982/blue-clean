@@ -30,7 +30,8 @@ public class EstadoController implements Serializable {
 	
 	private List<Cidade> listaCidades = new ArrayList<Cidade>();
 	private Cidade cidade = new Cidade();
-	private Estado estado = new Estado();
+	private Estado estado;
+	private boolean bloqueiaCidade;
 	
 	@Inject
 	private Estados estados;
@@ -38,13 +39,26 @@ public class EstadoController implements Serializable {
 	@Inject
 	private Cidades cidades;
 	
+	@PostConstruct
+	public void init() {
+		estado = new Estado();
+		bloqueiaCidade = true;
+	}
+	
 	public List<Estado> getEstados() {		
 		return estados.findAll();
 	}
 		
 	public void carregarCidades() {
 		listaCidades.clear();
-		listaCidades = cidades.findByEstadoCodigo(estado.getCodigo());
+		
+		bloqueiaCidade = true;
+		
+		if(estado != null) {
+			bloqueiaCidade = false; 
+			listaCidades = cidades.findByEstadoCodigo(estado.getCodigo());
+		
+		}
 	}
 }
 

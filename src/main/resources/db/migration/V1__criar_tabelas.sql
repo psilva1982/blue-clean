@@ -24,6 +24,8 @@ CREATE TABLE cliente (
   nome varchar(80) NOT NULL,
   tipo_pessoa varchar(15) NOT NULL,
   cpf_cnpj varchar(30) NOT NULL,
+  nascimento date NOT NULL,
+  credito_aprovado decimal(10, 2) NOT NULL DEFAULT '0.0',
   telefone varchar(20) DEFAULT NULL,
   email varchar(50) DEFAULT NULL,
   logradouro varchar(50) DEFAULT NULL,
