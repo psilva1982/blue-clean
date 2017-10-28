@@ -5,6 +5,8 @@ AW.onSidebarToggleRequest = function(event) {
   $(this).blur();
 
   $('.js-sidebar, .js-content').toggleClass('is-toggled');
+  
+  	AW.ActiveMenu();
 };
 
 AW.onMenuGroupClick = function(event) {
