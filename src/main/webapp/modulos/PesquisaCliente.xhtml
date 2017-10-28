@@ -34,25 +34,7 @@
 	<b:form>
 		
 		<div class="col-md-12">
-			
-			<!--  	
-			<b:dataTable var="c" value="#{clienteController.listaClientes}" 
-			    	
-			    	fixedHeader="true" scroll-size="500px" scroll-x="false"
-					customLangUrl="#{resource['/bootfaces/DataTable_pt-BR.json']}"
-					 searching="false" >
-				
-				<b:dataTableColumn value="#{c.nome}"/>
-				<b:dataTableColumn value="#{c.tipoPessoa.descricao}" label="Descrição"/>
-				<b:dataTableColumn value="#{c.email}" label="E-mail"/>
-				<b:dataTableColumn value="#{c.telefone}" label="Telefone" />
-				<b:dataTableColumn style="text-align: center" label="">
-					<span><i class="fa fa-pencil"></i></span>
-			 		<span><i class="fa fa-trash"></i></span>
-			 	</b:dataTableColumn>
-			</b:dataTable>
-			-->
-			
+						
 	    	<p:dataTable id="clienteTable" value="#{pesquisaClienteBean.lazyClientes}" var="cliente" widgetVar="tabelaClientes"
 		    		style="margin-top: 20px" emptyMessage="Nenhum cliente encontrado." rows="15"
 		    		paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
@@ -60,7 +42,7 @@
 
 			    <f:facet name="header">
 			       	Clientes cadastrados	 
-			        <p:commandLink id="toggler" type="button"  style="float:right">
+			        <p:commandLink id="toggler" type="button"  style="float:right" styleClass="hidden-xs">
 			        	<span><i class="fa fa-binoculars"/> Exibir</span>
 			        </p:commandLink>
 			        

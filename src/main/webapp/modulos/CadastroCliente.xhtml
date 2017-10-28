@@ -35,7 +35,10 @@
 		
 		<b:messages severity="error, warn"/>
 		
-		<b:growl severity="info"/>
+		<b:growl severity="info" placementFrom="bottom"
+        animation-enter="animated fadeInUpBig"
+        animation-exit="animated fadeOutDownBig"
+        escape="true" allow-dismiss="true"/>
 					
 		<div class="row">
 			<b:column mediumScreen="12">
@@ -123,21 +126,21 @@
 			</div>
 			
 			<div class="col-sm-4 form-group bw-required" >
-				<b:selectOneMenu  label="Estado" value="#{estadoController.estado}" id="estado" 
+				<b:selectOneMenu  label="Estado" value="#{estadoBean.estado}" id="estado" 
 					required="true" required-message="Selecione um estado"
-					onchange="ajax:estadoController.carregarCidades()" update="cidade" process="@this">
+					onchange="ajax:estadoBean.carregarCidades()" update="cidade" process="@this">
 					
-					<f:selectItem itemLabel="Selecione um estado"/>
-					<f:selectItems value="#{estadoController.getEstados()}" var="item"  itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
+					<f:selectItem itemLabel="Selecione um estado" itemValue="99"/>
+					<f:selectItems value="#{estadoBean.getEstados()}" var="item"  itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
 				</b:selectOneMenu>
 			</div>
 			
 			<div class="col-sm-4 form-group bw-required" >
 				<b:selectOneMenu id="cidade" label="Cidade" value="#{clienteController.cliente.endereco.cidade}" 
-					disabled="#{estadoController.bloqueiaCidade}">
+					disabled="#{estadoBean.bloqueiaCidade}">
 					
 					<f:selectItem itemLabel="Selecione uma cidade"/>
-					<f:selectItems value="#{estadoController.listaCidades}" var="item" itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
+					<f:selectItems value="#{estadoBean.listaCidades}" var="item" itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
 				</b:selectOneMenu>				
 					
 			</div>
@@ -147,7 +150,7 @@
 				<b:commandButton actionListener="#{clienteController.salvar()}" id="salvar-btn" look="primary"
 					value="Salvar" process="@form" update="@form" iconAwesome="floppy-o" style="margin-right: 5px"/>
 
-				<b:commandButton action="#{clienteController.preparaCadastro}" actionListener="#{estadoController.init}"
+				<b:commandButton action="#{clienteController.preparaCadastro}" actionListener="#{estadoBean.init}"
 					 id="cancelar-btn" look="danger"
 					value="Cancelar" process="@this" update="@form" iconAwesome="close" style="margin-right: 5px"/>		
 				

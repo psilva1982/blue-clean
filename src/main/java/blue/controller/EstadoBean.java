@@ -24,7 +24,7 @@ import lombok.Setter;
 @Setter
 @Named
 @ViewScoped
-public class EstadoController implements Serializable {
+public class EstadoBean implements Serializable {
 	
 	private static final long serialVersionUID = 1L;
 	
@@ -48,16 +48,17 @@ public class EstadoController implements Serializable {
 	public List<Estado> getEstados() {		
 		return estados.findAll();
 	}
-		
+			
 	public void carregarCidades() {
 		listaCidades.clear();
+				
+		listaCidades = cidades.findByEstadoCodigo(estado.getCodigo());
 		
-		bloqueiaCidade = true;
+		if(listaCidades.size() > 0) {
+			bloqueiaCidade = false;
 		
-		if(estado != null) {
-			bloqueiaCidade = false; 
-			listaCidades = cidades.findByEstadoCodigo(estado.getCodigo());
-		
+		}else {
+			bloqueiaCidade = true;
 		}
 	}
 }
