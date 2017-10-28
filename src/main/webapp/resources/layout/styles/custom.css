@@ -31,6 +31,10 @@
 /* =========================== 
  Primefaces
 ============================== */
+.ui-widget {
+	font-size: 1em !important;
+}
+
 /* Remove o fundo vermelho do label quando ocorre erro na validação */
 label.ui-state-error {
     background: none !important;

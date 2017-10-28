@@ -18,8 +18,15 @@
 		<param-value>true</param-value>
 	</context-param>
 	
+	<!-- Desabilitando o Jquery do Bootfaces -->
 	<context-param>
 		<param-name>net.bootsfaces.get_jquery_from_cdn</param-name>
+		<param-value>true</param-value>
+	</context-param>
+	
+	<!-- Desabilitando o FontAwesome do Bootfaces -->
+	<context-param>
+		<param-name>net.bootsfaces.get_fontawesome_from_cdn</param-name>
 		<param-value>true</param-value>
 	</context-param>
  

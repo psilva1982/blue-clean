@@ -34,12 +34,13 @@
 	<b:form>
 		
 		<div class="col-md-12">
-
+			
+			<!--  	
 			<b:dataTable var="c" value="#{clienteController.listaClientes}" 
 			    	
 			    	fixedHeader="true" scroll-size="500px" scroll-x="false"
 					customLangUrl="#{resource['/bootfaces/DataTable_pt-BR.json']}"
-					 searching="false">
+					 searching="false" >
 				
 				<b:dataTableColumn value="#{c.nome}"/>
 				<b:dataTableColumn value="#{c.tipoPessoa.descricao}" label="Descrição"/>
@@ -50,6 +51,61 @@
 			 		<span><i class="fa fa-trash"></i></span>
 			 	</b:dataTableColumn>
 			</b:dataTable>
+			-->
+			
+	    	<p:dataTable id="clienteTable" value="#{pesquisaClienteBean.lazyClientes}" var="cliente" widgetVar="tabelaClientes"
+		    		style="margin-top: 20px" emptyMessage="Nenhum cliente encontrado." rows="15"
+		    		paginator="true" paginatorAlwaysVisible="false" paginatorPosition="bottom"
+		    		lazy="true" reflow="true" rowsPerPageTemplate="15, 20, 25">
+
+			    <f:facet name="header">
+			       	Clientes cadastrados	 
+			        <p:commandLink id="toggler" type="button"  style="float:right">
+			        	<span><i class="fa fa-binoculars"/> Exibir</span>
+			        </p:commandLink>
+			        
+			        <p:columnToggler datasource="clienteTable" trigger="toggler" />
+			    </f:facet>
+		    
+		    	<p:column headerText="Nome" sortBy="#{cliente.nome}" filterBy="#{cliente.nome}">
+		    		<h:outputText value="#{cliente.nome}"/>
+		    	</p:column>
+
+		    	<p:column headerText="CPF / CNPJ" sortBy="#{cliente.cpfOuCnpj}" filterBy="#{cliente.cpfOuCnpj}">
+		    		<h:outputText value="#{cliente.cpfOuCnpj}"/>
+		    	</p:column>
+		    	
+		    	<p:column headerText="Telefone" sortBy="#{cliente.telefone}" filterBy="#{cliente.telefone}">
+		    		<h:outputText value="#{cliente.telefone}"/>
+		    	</p:column>
+
+		    	<p:column headerText="E-mail" sortBy="#{cliente.email}" filterBy="#{cliente.email}">
+		    		<h:outputText value="#{cliente.email}"/>
+		    	</p:column>		    	
+
+		    	<p:column headerText="Endereço" sortBy="#{cliente.endereco.logradouro}" filterBy="#{cliente.endereco.logradouro}">
+		    		<h:outputText value="#{cliente.endereco.logradouro}, #{cliente.endereco.numero}"/>
+		    	</p:column>
+
+		    	<p:column headerText="Opções" style="text-align:center">
+		             <p:commandLink title="Editar" style="margin-right: 15px">
+		                <f:setPropertyActionListener value="#{cliente}" target="#{dtSelectionView.selectedCar}" />
+		                <i class="fa fa-pencil"/>
+		            </p:commandLink>
+
+		             <p:commandLink title="Excluir" style="margin-right: 15px">
+		                <f:setPropertyActionListener value="#{cliente}" target="#{dtSelectionView.selectedCar}" />
+		                <i class="fa fa-trash"/>
+		            </p:commandLink>	
+		            
+		             <p:commandLink title="Visualizar">
+		                <f:setPropertyActionListener value="#{cliente}" target="#{dtSelectionView.selectedCar}" />
+		                <i class="fa fa-search"/>
+		            </p:commandLink>			            
+		            		    		
+		    	</p:column>			    			
+		    	
+		    </p:dataTable>			
 				
 		</div>
 		

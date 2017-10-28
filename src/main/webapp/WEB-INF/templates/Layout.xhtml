@@ -25,25 +25,23 @@
 	<div class="aw-layout-page">
 		<ui:include src="Cabecalho.xhtml"/>
 		
-		<aside class="aw-layout-sidebar  js-sidebar">
+		<aside class="aw-layout-sidebar js-sidebar is-toggled">
 			<ui:include src="Menu.xhtml" />
 		</aside>
 		
-		<section class=" aw-layout-content js-content">
+		<section class=" aw-layout-content js-content is-toggled">
 			<ui:insert name="content" />
 		</section>
 	</div>
 
+	<!-- Rodapé -->
+	<footer class="aw-layout-footer  js-content">
+		<div class="container-fluid">
+			<span class="aw-footer-disclaimer">2017 - Blue Clean layout para Bootfaces e Primefaces</span>
+		</div>
+	</footer>
+
 	<h:form>
-		<!-- 
-		<p:ajaxStatus onstart="PF('statusDialog').show()" oncomplete="PF('statusDialog').hide()"/>
-			 
-		<p:dialog styleClass="aw-transparente" widgetVar="statusDialog" modal="true" visible="false" draggable="false" closable="false" resizable="false" showHeader="false">
-			<h:panelGrid columns="1" styleClass="aw-transparente">
-				<h:outputText styleClass="fa fa-spinner fa-pulse fa-4x fa-fw"/>
-			</h:panelGrid>
-		</p:dialog>
-		 -->		
 
 		<p:ajaxStatus>	 
 			    <f:facet name="default">
@@ -65,7 +63,6 @@
 	 
 	<h:outputScript library="bootstrap" name="javascripts/bootstrap.js" />
 	<h:outputScript library="algaworks" name="javascripts/algaworks.js" />
-	<h:outputScript library="layout" name="javascripts/blue.js"/>
 	
 	<ui:insert name="extra"/>
 	
