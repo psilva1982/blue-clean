@@ -223,9 +223,17 @@
   border-radius: 50%;
   border: 1px solid #d5d5d5;
 }
+
+.aw-logged-user__menu-picture {
+  margin: 6px;
+  padding: 2px;
+  border-radius: 50%;
+  border: 1px solid #d5d5d5;
+}
+
 .aw-logged-user__name {
   display: block;
-  min-width: 180px;
+  min-width: 165px;
   margin-top: 10px;
   font-weight: 500;
   text-align: center;
@@ -401,6 +409,26 @@
 .aw-menu__navigation-icon:before {
   content: "\f0d9";
 }
+
+.aw-menu__header {
+	background: #eeeeee;
+	font-weight: bold;
+	color: #000000;
+}
+
+.aw-menu__header > a {
+	tsext-decoration: none;
+	color: #000000;
+}
+
+.aw-menu__header > a:hover {
+	text-decoration: none;
+}
+
+.aw-menu__header > a:focus {
+	text-decoration: none;
+}
+
 /*------------------------------------------*\
   Box
   - Para ser usado em indicadores (dahboard)
@@ -554,7 +582,7 @@ body {
 .aw-label-corner {
   position: absolute;
   top: 11px;
-  right: 0px;
+  right: 2px;
   padding: 2px 5px;
 }
 .aw-form-control-inline-sm {

@@ -10,5 +10,5 @@ import blue.model.Cliente;
 public interface ClientesQueries {
 	
 	public List<Cliente> getLazyClientes(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String, Object> filters);
-	public Long getTotalRegistrosAdvogadoProjecao(Map<String, Object> filters);
+	public Long getTotalClientes(Map<String, Object> filters);
 }

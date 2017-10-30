@@ -28,8 +28,13 @@ public class ClientesImpl implements ClientesQueries {
 			Object valor = filters.get(atributo);
 			if (valor != null) {
 				
-				String parametro = atributo;
-								
+				String parametro = atributo;				
+				
+				if(atributo.equals("endereco.logradouro")) {
+					parametro = "logradouro";
+				
+				}
+				
 				if (valor.getClass() == String.class) {					
 					jpql += " and lower(c." +atributo+ ") like :"  +parametro;
 				
@@ -37,6 +42,7 @@ public class ClientesImpl implements ClientesQueries {
 					
 					jpql += " and c." +atributo+ " = :"  +parametro;
 				}
+				
 			}
 		}
 		
@@ -48,14 +54,18 @@ public class ClientesImpl implements ClientesQueries {
 				jpql += " order by c." + sortField + " desc";
 			}
 		}		
-
+				
 		Query query = manager.createQuery(jpql);
 
 		for (Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
 			String atributo = it.next();
 			Object valor = filters.get(atributo);
 			if (valor != null) {
-								
+						
+				if(atributo.equals("endereco.logradouro")) {
+					atributo = "logradouro";
+				}
+				
 				if (valor.getClass() == String.class) {
 					query.setParameter(atributo, "%" + String.valueOf(valor).toLowerCase() + "%");
 				
@@ -71,7 +81,7 @@ public class ClientesImpl implements ClientesQueries {
 		return query.getResultList();	
 	}
 
-	public Long getTotalRegistrosAdvogadoProjecao(Map<String, Object> filters) {
+	public Long getTotalClientes(Map<String, Object> filters) {
 		String jpql = "SELECT COUNT(c.codigo) FROM Cliente c where 1=1 ";
 		
 		for (Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
@@ -79,8 +89,13 @@ public class ClientesImpl implements ClientesQueries {
 			Object valor = filters.get(atributo);
 
 			String parametro = atributo;
-						
+			
+			if(atributo.equals("endereco.logradouro")) {
+				parametro = "logradouro";
+			}
+			
 			if (valor != null) {
+				
 				if (valor.getClass() == String.class) {
 					jpql += " AND LOWER(c." +atributo+ ") like :" +parametro;
 				} else {
@@ -94,7 +109,11 @@ public class ClientesImpl implements ClientesQueries {
 		for (Iterator<String> it = filters.keySet().iterator(); it.hasNext();) {
 			String atributo = it.next();
 			Object valor = filters.get(atributo);
-						
+
+			if(atributo.equals("endereco.logradouro")) {
+				atributo = "logradouro";
+			}
+			
 			if (valor != null) {
 				if (valor.getClass() == String.class) {
 					query.setParameter(atributo, "%" + String.valueOf(valor).toLowerCase() + "%");

@@ -3,10 +3,38 @@
 	xmlns:h="http://xmlns.jcp.org/jsf/html">
 	
 <div class="aw-layout-sidebar__content">
-
-    <nav class="aw-menu  js-menu">
+		
+    <nav class="aw-menu js-menu">
+    
       <ul class="aw-menu__list">
-
+		
+		<li class="aw-menu__item">
+	      <li class="dropdown aw-menu__header" >
+	        <a href="#" class="dropdown-toggle nav-user-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+	          <img src="http://i.pravatar.cc/150" 
+	                width="35" height="35" class="aw-logged-user__menu-picture" />
+	          <span>João <i class="caret"/></span>
+	        </a>
+	        
+	        <ul class="dropdown-menu">
+	          <li>
+	            <div class="aw-logged-user">
+	              <img src="http://i.pravatar.cc/150" 
+	                width="130" height="130" alt="João das Couves" class="aw-logged-user__picture" />
+	              <span class="aw-logged-user__name">João das Couves</span>
+	            </div>
+	          </li>
+	          <li role="separator" class="divider"></li>
+	          <li><a href="#">Meu perfil</a></li>
+	          <li><a href="#">Alterar senha</a></li>
+	          <li><a href="#">Pagamentos</a></li>
+	          <li><a href="#"><em class="fa  fa-sign-out"></em> Sair</a></li>
+	        </ul>
+	      </li>
+		</li>
+		
+		<li role="separator" class="aw-menu__item divider"></li>
+			
         <li class="aw-menu__item">
           <a href="#{request.contextPath}/Dashboard.xhtml"><i class="fa  fa-fw  fa-home"></i><span>Dashboard</span></a>
         </li>

@@ -23,7 +23,7 @@ public class LazyClienteDataModel extends LazyDataModel<Cliente> implements Seri
 		
 		List<Cliente> listaClientes = clientes.getLazyClientes(first, pageSize, sortField, sortOrder, filters);
 		
-		this.setRowCount(clientes.getTotalRegistrosAdvogadoProjecao(filters).intValue());
+		this.setRowCount(clientes.getTotalClientes(filters).intValue());
 		
 		return listaClientes;
 	}
