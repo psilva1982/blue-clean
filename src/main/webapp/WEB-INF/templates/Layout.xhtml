@@ -44,12 +44,9 @@
 	<h:form>
 
 		<p:ajaxStatus>	 
-			    <f:facet name="default">
-	        		<h:outputText value="" />
-	    		</f:facet>
 			    <f:facet name="start">
 	        		<div class="aw-carregando-box">
-	        			<span><i class="fa fa-spinner fa-pulse fa-fw"/> carregando...</span>
+	        			<span><i class="fa fa-refresh fa-pulse fa-fw"/> processando...</span>
 	   				</div>
 	   			</f:facet>
 	   		    <f:facet name="complete">
@@ -59,10 +56,11 @@
 		 
 	</h:form>	
 
-	<h:outputScript target="body" library="primefaces" name="jquery/jquery.js" />	 		
-	 
+	<h:outputScript library="primefaces" name="jquery/jquery.js" />s
 	<h:outputScript library="bootstrap" name="javascripts/bootstrap.js" />
 	<h:outputScript library="algaworks" name="javascripts/algaworks.js" />
+	<h:outputScript library="layout" name="javascripts/jquery.masknumber.min.js" />
+	<h:outputScript library="layout" name="javascripts/blue.js"/>
 	
 	<ui:insert name="extra"/>
 	

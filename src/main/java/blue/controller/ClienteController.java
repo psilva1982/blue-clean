@@ -8,6 +8,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
+import javax.annotation.PostConstruct;
 import javax.faces.application.FacesMessage;
 import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
@@ -50,9 +51,13 @@ public class ClienteController implements Serializable {
 	
 	@Inject
 	private CadastroClienteService cadastroClienteService;
-			
-	public void preparaCadastro() {
+	
+	@PostConstruct
+	public void init() {
 		cliente = new Cliente();
+	}
+	
+	public void preparaCadastro() {
 		cliente.setEndereco(new Endereco());
 		labelDocumento = "CPF / CNPJ";
 		desabilitaDocumento = true; 
@@ -76,7 +81,6 @@ public class ClienteController implements Serializable {
 		try {
 			
 			cliente.setCredito(new BigDecimal("0.0"));
-			
 			cadastroClienteService.salvar(cliente);
 						
 	        FacesContext context = FacesContext.getCurrentInstance();
@@ -93,30 +97,12 @@ public class ClienteController implements Serializable {
 	public void listarClientes() {
 		this.listaClientes = clientes.findAll();
 	}
-	/*
-	public void gerarClientes() {
-		
-		Optional<Cidade> cidade = cidades.findById(new Long(1));
-		
-		ClienteGenerator gen = new ClienteGenerator();
-		
-		List<Cliente> novos = gen.gerarQuantos(120);
-		
-		for(Cliente c : novos) {
-			
-			try {
-				c.getEndereco().setCidade(cidade.get());
-				c.setCredito(new BigDecimal("0.0"));
-				cadastroClienteService.salvar(c);
-			
-			}catch (Exception e) {
-				e.printStackTrace();
-			}
-			
+
+	public void loading() {
+		try {
+			Thread.sleep(10000);
+		}catch (Exception e) {
+			// TODO: handle exception
 		}
-		
-        FacesContext context = FacesContext.getCurrentInstance();
-        context.addMessage(null, new FacesMessage(FacesMessage.SEVERITY_INFO,"Sucesso", "Operação realizada com sucesso"));
 	}
-	*/
 }

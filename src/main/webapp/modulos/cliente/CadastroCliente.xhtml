@@ -40,7 +40,7 @@
         animation-exit="animated fadeOutDownBig"
         escape="true" allow-dismiss="true"/>
 					
-		<div class="row">
+		<b:row>
 			<b:column mediumScreen="12">
 				<b:inputText id="nome" label="Nome" value="#{clienteController.cliente.nome}">
 						<f:facet name="prepend">
@@ -48,9 +48,9 @@
 						</f:facet>
 				</b:inputText>
 			</b:column>
-		</div>
+		</b:row>
 		
-		<div class="row">
+		<b:row>
 			<b:column mediumScreen="4"> 
 				<p:outputLabel for="tipoPessoa" value="Tipo Pessoa *"/>
 				<p:selectOneRadio id="tipoPessoa" value="#{clienteController.cliente.tipoPessoa}" 
@@ -79,9 +79,9 @@
 				 placeholder="DD/MM/AAAA"  allow-input-toggle="true" converter="localDateConverter"
 				 value="#{clienteController.cliente.nascimento}"/>
 			</b:column>
-		</div>
+		</b:row>
 
-		<div class="row">
+		<b:row>
 			<b:column mediumScreen="4">
 				<b:inputText id="telefone" label="Telefone" mask="(99) 9{4,5}-9999"
 					value="#{clienteController.cliente.telefone}">
@@ -99,7 +99,7 @@
 					</f:facet>
 				</b:inputText>
 			</b:column>
-		</div>
+		</b:row>
 
 		<div class="row">
 			<b:column mediumScreen="4">
@@ -119,13 +119,13 @@
 			</b:column>
 		</div>	
 
-		<div class="row">
-			<div class="col-sm-4" >
+		<b:row>
+			<b:column mediumScreen="4">
 				<b:inputText id="cep" type="text" label="CEP" mask="99999-999"
 					value="#{clienteController.cliente.endereco.cep}"/>					
-			</div>
+			</b:column>
 			
-			<div class="col-sm-4 form-group bw-required" >
+			<b:column mediumScreen="4">
 				<b:selectOneMenu  label="Estado" value="#{estadoBean.estado}" id="estado" 
 					required="true" required-message="Selecione um estado"
 					onchange="ajax:estadoBean.carregarCidades()" update="cidade" process="@this">
@@ -133,9 +133,9 @@
 					<f:selectItem itemLabel="Selecione um estado" itemValue="99"/>
 					<f:selectItems value="#{estadoBean.getEstados()}" var="item"  itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
 				</b:selectOneMenu>
-			</div>
+			</b:column>
 			
-			<div class="col-sm-4 form-group bw-required" >
+			<b:column mediumScreen="4">
 				<b:selectOneMenu id="cidade" label="Cidade" value="#{clienteController.cliente.endereco.cidade}" 
 					disabled="#{estadoBean.bloqueiaCidade}">
 					
@@ -143,18 +143,23 @@
 					<f:selectItems value="#{estadoBean.listaCidades}" var="item" itemLabel="#{item.nome}" itemValue="#{item.codigo}"/>					
 				</b:selectOneMenu>				
 					
-			</div>
-		</div>
-		<b:row>
+			</b:column>
+		</b:row>
+		
+		<b:row style="margin-top: 20px">
 			<b:column mediumScreen="12">
-				<b:commandButton actionListener="#{clienteController.salvar()}" id="salvar-btn" look="primary"
-					value="Salvar" process="@form" update="@form" iconAwesome="floppy-o" style="margin-right: 5px"/>
-
 				<b:commandButton action="#{clienteController.preparaCadastro}" actionListener="#{estadoBean.init}"
-					 id="cancelar-btn" look="danger"
-					value="Cancelar" process="@this" update="@form" iconAwesome="close" style="margin-right: 5px"/>		
+					 id="novo-btn" look="primary"
+					value="Novo" process="@this" update="@form" iconAwesome="plus" style="margin-right: 5px"/>		
+
+				<b:commandButton actionListener="#{clienteController.salvar()}" id="salvar-btn" look="primary"
+					value="Salvar" process="@form" update="@form" iconAwesome="save" style="margin-right: 5px"/>
 				
-			
+				<b:commandButton actionListener="#{clienteController.loading()}" id="ajax-btn" look="primary"
+					value="Processando" process="@this" update="@form" iconAwesome="gears" style="margin-right: 5px"/>			
+
+				<b:button value="Pesquisa de Cliente" iconAwesome="search" styleClass="pull-right"
+					outcome="PesquisaCliente.xhtml"/>
 											
 			</b:column>
 		</b:row>

@@ -9,6 +9,7 @@
       <ul class="aw-menu__list">
 		
 		<li class="aw-menu__item">
+		
 	      <li class="dropdown aw-menu__header" >
 	        <a href="#" class="dropdown-toggle nav-user-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
 	          <img src="http://i.pravatar.cc/150" 
@@ -31,6 +32,7 @@
 	          <li><a href="#"><em class="fa  fa-sign-out"></em> Sair</a></li>
 	        </ul>
 	      </li>
+		
 		</li>
 		
 		<li role="separator" class="aw-menu__item divider"></li>
@@ -41,15 +43,19 @@
 
         <li class="aw-menu__item">
           <a href="#">
-            <i class="fa  fa-fw  fa-users"></i><span>Clientes</span>
+            <i class="fa  fa-fw fa-database"></i><span>Cadastros</span>
             <i class="aw-menu__navigation-icon  fa"></i>
           </a>
       
           <ul class="aw-menu__list  aw-menu__list--sublist">
-            <li class="aw-menu__item  aw-menu__item--link"><a href="#{request.contextPath}/modulos/CadastroCliente.xhtml">Cadastro</a></li>
-            <li class="aw-menu__item  aw-menu__item--link"><a href="#{request.contextPath}/modulos/PesquisaCliente.xhtml">Pesquisa</a></li>
+            <li class="aw-menu__item  aw-menu__item--link">
+            	<a href="#{request.contextPath}/modulos/cliente/CadastroCliente.xhtml">Clientes</a></li>
+            <li class="aw-menu__item  aw-menu__item--link">
+            	<a href="#{request.contextPath}/modulos/produto/CadastroProduto.xhtml">Produtos</a></li>
           </ul>
         </li>
+
+
 
         <li class="aw-menu__item">
           <a href="#">

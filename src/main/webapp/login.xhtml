@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:b="http://bootsfaces.net/ui"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+
+<h:head>
+	<f:facet name="first">
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+	</f:facet>
+
+	<title>Blue Clean</title>
+	
+	<h:outputStylesheet library="bootstrap" name="styles/bootstrap.css" />
+	<h:outputStylesheet library="algaworks" name="styles/algaworks.css" />
+	<h:outputStylesheet library="layout" name="styles/custom.css" />
+	
+</h:head>
+
+<h:body class="aw-layout-simple-page">
+  <div class="aw-layout-simple-page__container">
+
+<b:form>
+	<div class="aw-simple-panel">
+				
+		<div class="aw-simple-panel__box">
+
+			<div class="aw-simple-panel__message">
+				Por favor, faça o login.
+			</div>
+		
+			<div class="form-group  has-feedback">
+				<b:inputText fieldSize="lg" id="email" placeholder="Seu e-mail"/>
+				<span class="glyphicon  glyphicon-user  form-control-feedback" aria-hidden="true" style="top: 7px"></span>
+			</div>
+			
+			<div class="form-group  has-feedback">
+				<b:inputSecret fieldSize="lg" id="senha" placeholder="Sua senha"/>
+				<span class="glyphicon  glyphicon-lock  form-control-feedback" aria-hidden="true" style="top: 7px"></span>
+			</div>
+			<div class="form-group">
+				<b:commandButton class="btn  btn-primary  btn-lg aw-btn-full-width" value="Entrar"/>
+			</div>
+			
+			<div class="form-group clearfix" style="margin-bottom: 30px">
+				<div class="pull-left">
+					Novo por aqui? <a href="#">Cadastre-se</a>.
+				</div>
+				
+				<div class="pull-right">
+					<a href="esqueceu-a-senha.html">Esqueceu a senha?</a>
+				</div>
+			</div>
+			
+		</div>
+		
+		
+	</div>
+</b:form>
+
+</div>
+
+	<h:outputScript library="primefaces" name="jquery/jquery.js" />
+	<h:outputScript library="bootstrap" name="javascripts/bootstrap.js" />
+	<h:outputScript library="algaworks" name="javascripts/algaworks.js" />
+
+  <script>
+  $(function() {
+	    var classCycle=['imageCycle1', 'imageCycle2', 'imageCycle3', 'imageCycle4', 'imageCycle5'];
+
+	    var randomNumber = Math.floor(Math.random() * classCycle.length);
+	    var classToAdd = classCycle[randomNumber];
+
+	    $('body').addClass(classToAdd);
+
+	});
+  </script> 
+  
+</h:body>
+</html>

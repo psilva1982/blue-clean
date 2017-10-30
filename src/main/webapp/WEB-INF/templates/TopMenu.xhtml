@@ -22,23 +22,20 @@
 		        	<i class="fa fa-database"/> Cadastros <span class="caret"></span>
 		        </a>
 	          <ul class="dropdown-menu">
-	            <li class="dropdown-submenu">
-	            	<a href="#">Clientes</a>
+	            <li class="dropdown-submenu"> <a href="#">Clientes</a>
+	            
 			        <ul class="dropdown-menu">
-			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/CadastroCliente.xhtml">Cadastro</a></li>
-			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/PesquisaCliente.xhtml">Pesquisa</a></li>
-
+			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/cliente/CadastroCliente.xhtml">Cadastro</a></li>
+			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/cliente/PesquisaCliente.xhtml">Pesquisa</a></li>
 			        </ul>	            	
 	            </li>
-	            
-	            <li><a href="#">Another action</a></li>
-			    
+	                 
 			    <li class="dropdown-submenu">
-			        <a class="test" tabindex="-1" href="#">New dropdown</a>
+			        <a class="test" tabindex="-1" href="#">Produtos</a>
 			    
 			        <ul class="dropdown-menu">
-			          <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
-			          <li><a tabindex="-1" href="#">2nd level dropdown</a></li>
+			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/produto/CadastroProduto.xhtml">Cadastro</a></li>
+			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/produto/PesquisaProduto.xhtml">Pesquisa</a></li>
 
 			        </ul>
 			    </li>	      	            
@@ -56,7 +53,15 @@
 		    
 		    <ul class="dropdown-menu">
 		      <li><a tabindex="-1" href="#">Item 1</a></li>
-		      <li><a tabindex="-1" href="#">Item 2</a></li>
+		      <li class="dropdown-submenu">
+		      	<a tabindex="-1" href="#">Usuários</a>
+			        <ul class="dropdown-menu">
+			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/usuario/CadastroUsuario.xhtml">Cadastro</a></li>
+			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/produto/PesquisaProduto.xhtml">Pesquisa</a></li>
+			        </ul>
+		      </li>
+		      
+		      
 		      <li class="dropdown-submenu">
 		        <a class="test" tabindex="-1" href="#">Item 3 </a>
 		        <ul class="dropdown-menu">

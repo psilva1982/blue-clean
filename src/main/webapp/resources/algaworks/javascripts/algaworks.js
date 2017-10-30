@@ -46,7 +46,6 @@ AW.initMenu = function() {
   AW.ActiveMenu();
 };
 
-
 $(function() {
   if (AW.init) {
     AW.init();
