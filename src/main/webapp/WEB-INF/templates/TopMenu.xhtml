@@ -41,9 +41,15 @@
 			    </li>	      	            
 	            
 	            <li role="separator" class="divider"></li>
-	            <li><a href="#">Separated link</a></li>
-	            <li role="separator" class="divider"></li>
-	            <li><a href="#">One more separated link</a></li>
+			    <li class="dropdown-submenu">
+			        <a class="test" tabindex="-1" href="#">Pedidos</a>
+			    
+			        <ul class="dropdown-menu">
+			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/pedido/CadastroPedido.xhtml">Novo</a></li>
+			          <li><a tabindex="-1" href="#{request.contextPath}/modulos/pedido/PesquisaPedido.xhtml">Pesquisa</a></li>
+
+			        </ul>
+			    </li>
 	          </ul>		        
 	        </li>
 

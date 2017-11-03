@@ -1,0 +1,188 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:b="http://bootsfaces.net/ui"
+	template="/WEB-INF/templates/Layout.xhtml">
+	
+<ui:define name="content">
+
+<f:metadata>
+	<f:viewAction action="#{clienteController.preparaCadastro()}" />
+</f:metadata>
+
+<div class="page-header">
+	<div class="container-fluid">
+		<div class="row">
+			<div class="col-md-8 col-xs-12">
+				<h1>Pedido <small>Novo</small></h1>
+			</div>
+			<div class="col-md-4 col-xs-12">
+				<ol class="breadcrumb">
+				  <li><a href="/Dashboard.xhtml"><i class="fa fa-home"></i> Dashboard</a></li>
+				  <li><a href="#{request.contextPath}/modulos/pedido/PesquisaPedido.xhtml">Pedidos</a></li>
+				  <li class="active">Novo</li>
+				</ol>
+			</div>
+		</div>
+	</div>
+</div>
+
+<div class="container-fluid">
+	
+	<b:form method="post" id="frm">
+		
+		<b:messages severity="error, warn"/>
+		
+		<b:growl severity="info" placementFrom="bottom"
+        	animation-enter="animated fadeInUpBig"
+        	animation-exit="animated fadeOutDownBig"
+        	escape="true" allow-dismiss="true"/>
+
+			<b:row>
+
+				<b:column mediumScreen="3">
+					<div class="aw-box js-valor-total-box-container">
+						<div class="aw-box__icon">
+							<i class="fa  fa-inbox  fa-3x"></i>
+						</div>
+						<div class="aw-box__value"><span>123454</span></div>
+						<div class="aw-box__title">Pedido</div>
+					</div>
+				</b:column>
+				
+				<b:column mediumScreen="3">
+					<div class="aw-box">
+						<div class="aw-box__icon">
+							<i class="fa  fa-tag  fa-3x"></i>
+						</div>
+						<div class="aw-box__value" >Orçamento</div>
+						<div class="aw-box__title">Status</div>
+					</div>
+				</b:column>
+				
+				<b:column mediumScreen="3">
+					<div class="aw-box">
+						<div class="aw-box__icon">
+							<i class="fa  fa-calendar  fa-3x"></i>
+						</div>
+						<div class="aw-box__value" >Hoje</div>
+						<div class="aw-box__title">Criação</div>
+					</div>
+				</b:column>
+
+				<b:column mediumScreen="3">
+				
+					<div class="aw-box js-valor-total-box-container">
+						<div class="aw-box__icon">
+							<i class="fa  fa-usd  fa-3x"></i>
+						</div>
+						<div class="aw-box__value">R$<span class="js-valor-total-box" > 0,00</span></div>
+						<div class="aw-box__title">Total</div>
+					</div>
+				</b:column>
+				
+			</b:row>
+					
+		<b:row >
+			<b:column mediumScreen="6">
+				<b:inputText placeholder="Digite o nome do cliente" label="Cliente">
+		            <f:facet name="prepend">
+		                <i class="fa fa-user"/>
+		            </f:facet>					
+				</b:inputText> 	
+			</b:column>
+
+			<b:column mediumScreen="3">
+				<b:selectOneMenu label="Forma de pagamento">
+					<f:selectItem itemLabel="Selecione"/>
+				</b:selectOneMenu>
+			</b:column>
+			
+			<b:column mediumScreen="3">
+				<b:inputText label="Vendedor" value="Joao das couves" readonly="true"/>
+			</b:column>
+			
+		</b:row>		
+
+		<b:row>
+			<b:column mediumScreen="3">
+				<b:inputText label="Valor do frete">
+		            <f:facet name="prepend">
+		                <span>$</span>
+		            </f:facet>					
+				</b:inputText>
+			</b:column>
+
+			<b:column mediumScreen="3" >
+				<b:inputText label="Valor do desconto">
+		            <f:facet name="prepend">
+		                <span>$</span>
+		            </f:facet>					
+				</b:inputText>
+			</b:column>
+												
+		</b:row>
+		
+		<b:row style="margin-top:20px">
+			<b:column mediumScreen="12">
+				<b:tabView >
+				    <b:tab title="Itens">
+				        <p>This is the first tab.</p>
+				    </b:tab>
+				    <b:tab title="Dados de entrega">
+				        <p>This is the second tab.</p>
+				    </b:tab>
+				    <!-- The next tab shows tabs aren't limited to text. You can put anything in a tab. -->
+				    <b:tab title="Image Tab">
+				      ...
+				    </b:tab>
+				    <b:tab title="Observação">
+				        <f:facet name="anchor"><b:iconAwesome name="cog" spin="true" /></f:facet>
+				        <p>This is fancy tab with a spinning image.</p>
+				    </b:tab>
+				 
+				</b:tabView>			
+			</b:column>		
+		</b:row>
+
+		<b:row style="margin-top: 20px">
+			<b:column mediumScreen="12">
+				<b:commandButton action="#{clienteController.preparaCadastro}" actionListener="#{estadoBean.init}"
+					 id="novo-btn" look="primary"
+					value="Novo" process="@this" update="@form" iconAwesome="plus" style="margin-right: 5px"/>		
+
+					<div class="btn-group" style="margin-right: 5px">
+					  <b:button value="Salvar" look="primary" iconAwesome="floppy-o"/>
+					  <button type="button" class="btn  btn-primary  dropdown-toggle" data-toggle="dropdown">
+					    <span class="caret"></span>
+					  </button>
+					  
+					  <ul class="dropdown-menu">
+					    <li><a href="#" class="js-submit-btn" >Salvar e emitir</a></li>
+					    <li><a href="#" class="js-submit-btn" >Salvar e enviar por e-mail</a></li>
+					  </ul>
+					</div>
+
+				<b:commandButton action="#{clienteController.preparaCadastro}" actionListener="#{estadoBean.init}"
+					 id="cancelar-btn" look="danger"
+					value="Cancelar" process="@this" update="@form" iconAwesome="remove" style="margin-right: 5px"/>										
+
+				<b:button value="Pesquisa de Cliente" iconAwesome="search" styleClass="pull-right"
+					outcome="PesquisaCliente.xhtml"/>
+											
+			</b:column>
+		</b:row>
+		
+	</b:form>
+</div>
+
+</ui:define>
+
+<ui:define name="extra">
+
+
+</ui:define>
+
+</ui:composition>

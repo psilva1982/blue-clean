@@ -5,6 +5,16 @@
 	z-index: 1040 !important;
 }
 
+/* ===========================
+Bootfaces 
+============================== */
+.tab-content {
+	border-left: 1px solid #ddd;
+	border-right: 1px solid #ddd;
+	border-bottom: 1px solid #ddd;
+	padding:10px;
+}
+
 /* Bootfaces - Growl */
 .alert-info {
 	border-color: #4CAF50 !important;
